@@ -1,6 +1,13 @@
 import { FaXTwitter, FaPhone, FaPinterestP, FaTiktok, FaInstagram } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 
+export async function generateMetadata() {
+  return {
+      title: 'Sofa Lux Pricing and Offers',
+      description: "Elevate Your Living Room and Offices with Quality Sofas.",
+  }
+}
+
 export default function Pricing() {
   return (
     <>
@@ -93,14 +100,14 @@ export default function Pricing() {
                 {/* <div className="mt-6 flex justify-between items-center mx-auto p-2 bg-red-600"> */}
 
                   <ul className="flex justify-between mx-10 space-x-4 p-4 rounded-sm mt-10">
-                    <li>
+                  <li>
                       <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaInstagram size={30}/>
+                        <FaXTwitter size={30}/>
                       </a>
                     </li>
                     <li>
                       <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaTiktok size={30}/>
+                        <FaInstagram size={30}/>
                       </a>
                     </li>
                     <li>
@@ -110,12 +117,12 @@ export default function Pricing() {
                     </li>
                     <li>
                       <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaXTwitter size={30}/>
+                        <FaFacebookF size={30}/>
                       </a>
                     </li>
                     <li>
                       <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaFacebookF size={30}/>
+                        <FaTiktok size={30}/>
                       </a>
                     </li>
                   </ul>

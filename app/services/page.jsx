@@ -2,6 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import orange from '@/assets/orange-sofa.jpg'
 
+export async function generateMetadata() {
+    return {
+        title: 'Sofa Lux Services and Products',
+        description: "Elevate Your Living Room and Offices with Quality Sofas.",
+    }
+}
+
 export default function Services() {
     return (
         <>

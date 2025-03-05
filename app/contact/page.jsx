@@ -2,6 +2,13 @@ import Image from 'next/image';
 import form from '@/assets/contact.jpg';
 import Submit from '@/components/button/Submit';
 
+export async function generateMetadata() {
+    return {
+        title: 'Reach Out To Sofa Lux',
+        description: "Elevate Your Living Room and Offices with Quality Sofas.",
+    }
+}
+
 export default function Contact() {
     return (
         <>
@@ -41,8 +48,8 @@ export default function Contact() {
                             <textarea id='message' placeholder='Enter your message' className='w-full border rounded-md p-3 text-[#ddd6cb] border-gray-600 bg-gray-950 focus:outline-none' rows='5'></textarea>
                         </div>
                         <p className='text-base text-justify mb-2 font-medium font-sans-montserrat'>
-                        By submitting this form you agree to our <a href=""><span className='text-amber-600'>terms and conditions</span></a> and our <a href=""><span className='text-amber-600'>privacy policy</span></a> which explains how we may collect, 
-                        use and disclose your personal information including to third parties.
+                            By submitting this form you agree to our <a href=""><span className='text-amber-600'>terms and conditions</span></a> and our <a href=""><span className='text-amber-600'>privacy policy</span></a> which explains how we may collect,
+                            use and disclose your personal information including to third parties.
                         </p>
                         <div type='submit' className='w-1/4 bg-amber-600 border border-gray-800 text-gray-950 text-[#ddd6cb] text-center text-2xl cursor-pointer p-2 font-bold rounded-lg hover:bg-amber-700 '>
                             <Submit />

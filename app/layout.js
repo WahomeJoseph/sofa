@@ -3,8 +3,8 @@ import Navigation from "@/components/nav/Navigation";
 import "./globals.css";
 
 export const metadata = {
-  title: "Core Tech Org.",
-  description: "Providing Software Development Solutions",
+  title: "Welcome to Sofa Lux.",
+  description: "Elevate Your Living Room and Offices with Quality Sofas.",
 };
 
 export default function RootLayout({ children }) {

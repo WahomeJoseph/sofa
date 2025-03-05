@@ -7,6 +7,13 @@ import { GrNext, GrPrevious } from 'react-icons/gr'
 import { FaStar } from "react-icons/fa6"
 import { RiDoubleQuotesL } from "react-icons/ri";
 
+// export async function generateMetadata() {
+//   return {
+//       title: 'Esteemed Sofa Lux Customers',
+//       description: "Elevate Your Living Room and Offices with Quality Sofas.",
+//   }
+// }
+
 const testimonials = [
   {
     image: 'https://images.unsplash.com/photo-1522390108011-5f8667fd551d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJsYWNrJTIwbGFkeXxlbnwwfHwwfHx8MA%3D%3D',
@@ -62,7 +69,7 @@ const Testimonial = () => {
       if (sliderRef.current) {
         sliderRef.current.swiper.slideTo(currentSlider)
       }
-    }, 8000)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [currentSlider])

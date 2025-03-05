@@ -39,7 +39,7 @@ export default function Navigation() {
                             <li onClick={closeNav}><Navlink href='/about'>About</Navlink></li>
 
                             <li className="group relative" onClick={closeNav}>
-                                <Navlink href="/services" className="block py-2 px-4">Service</Navlink>
+                                <Navlink href="/services" className="block py-2 px-4">Services</Navlink>
                                 <ul className="hidden group-hover:block mt-2 absolute top-full rounded-sm left-0 bg-gray-950 border border-gray-600 shadow-lg">
                                     <li>
                                         <Link href="" className="block py-2 px-4 hover:text-amber-600 cursor-pointer">

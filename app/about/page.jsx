@@ -8,6 +8,13 @@ import gray from '@/assets/gray-sofa.jpg'
 import orange from '@/assets/orange-sofa.jpg'
 import seater from '@/assets/one-seater.jpg'
 
+export async function generateMetadata() {
+    return {
+        title: 'Who is Sofa Lux?',
+        description: "Elevate Your Living Room and Offices with Quality Sofas.",
+    }
+}
+
 export default function About() {
     return (
         <>
@@ -28,19 +35,19 @@ export default function About() {
 
                         <article className="grid grid-cols-4 mt-8 gap-4">
                             <div className="flex flex-col space-x-2 p-3 items-center border-r border-gray-600 rounded-r-sm">
-                                <h2 className="text-[1.5rem] text-amber-600">200+</h2>
+                                <h2 className="text-[1.5rem] text-amber-600">2000+</h2>
                                 <span className="text-base text-[#ddd6cb]">Customers</span>
                             </div>
                             <div className="flex flex-col space-x-2 p-3 items-center border-r border-gray-600 rounded-r-sm">
-                                <h2 className="text-[1.5rem] text-amber-600">200+</h2>
+                                <h2 className="text-[1.5rem] text-amber-600">630+</h2>
                                 <span className="text-base text-[#ddd6cb]">Projects</span>
                             </div>
                             <div className="flex flex-col space-x-2 p-3 items-center border-r border-gray-600 rounded-r-sm">
-                                <h2 className="text-[1.5rem] text-amber-600">200+</h2>
+                                <h2 className="text-[1.5rem] text-amber-600">1200+</h2>
                                 <span className="text-base text-[#ddd6cb]">Orders</span>
                             </div>
                             <div className="flex flex-col space-x-2 p-3 items-center">
-                                <h2 className="text-[1.5rem] text-amber-600">4.5 *</h2>
+                                <h2 className="text-[1.5rem] text-amber-600">4.2 *</h2>
                                 <span className="text-base text-[#ddd6cb]">Rating</span>
                             </div>
                         </article>
@@ -70,15 +77,15 @@ export default function About() {
                 </div>
                 <div className="grid grid-cols-3 md:gap-12 md:mx-18 sm:mx-6 sm:mb-10 sm:gap-4 mb-4 mt-2">
                     <article className="flex flex-col space-x-2 p-3 border border-gray-600 rounded-sm">
-                        <h3 className="text-[1.2rem] text-amber-600">Why Choose SofaLux</h3>
+                        <h3 className="text-[1.2rem] text-center text-amber-600">Why Choose SofaLux</h3>
                         <span className="text-base text-center text-[#ddd6cb]">Discover the comfort and style your living room and office with our exclusive variety of sofas</span>
                     </article>
                     <article className="flex flex-col space-x-2 p-3 border border-gray-600 rounded-sm">
-                        <h3 className="text-[1.2rem] text-amber-600">Why Choose SofaLux</h3>
+                        <h3 className="text-[1.2rem] text-center text-amber-600">Why Choose SofaLux</h3>
                         <span className="text-base text-center text-[#ddd6cb]">Discover the comfort and style your living room and office with our exclusive variety of sofas</span>
                     </article>
                     <article className="flex flex-col space-x-2 p-3 border border-gray-600 rounded-sm">
-                        <h3 className="text-[1.2rem] text-amber-600">Why Choose SofaLux</h3>
+                        <h3 className="text-[1.2rem] text-center text-amber-600">Why Choose SofaLux</h3>
                         <span className="text-base text-center text-[#ddd6cb]">Discover the comfort and style your living room and office with our exclusive variety of sofas</span>
                     </article>
                 </div>
