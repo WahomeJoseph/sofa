@@ -66,7 +66,7 @@ export default function Navigation() {
 
                             <li onClick={closeNav}><Navlink href='/testimonials'>Testimonials</Navlink></li>
                             <li onClick={closeNav}><Navlink href='/contact'>Contact</Navlink></li>
-                            <li onClick={closeNav} className='animate-bounce'><Navlink href='/shop'>Shop</Navlink></li>
+                            <li onClick={closeNav}><Navlink href='/shop'>Shop</Navlink></li>
                         </ul>
                     </div>
                 </nav>
