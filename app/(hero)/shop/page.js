@@ -2,13 +2,13 @@ import Link from "next/link";
 import { Suspense } from "react"
 import SofaGrid from "@/components/products/SofaGrid";
 import { getSofas } from "@/utils/Products";
-import { IoCartOutline } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
 import { MdOutlineInventory2 } from "react-icons/md";
+import CartIcon from "@/components/cart/CartIcon";
 
 export const metadata = {
     title: 'Sofa Lux Products',
-    description: 'Delicious meals, shared by a food-loving community.',
+    description: 'Elevate Your Living Room and Offices with Quality Sofas.',
 };
 
 // sofadata fetching using a component fnc
@@ -28,12 +28,7 @@ export default function Shop() {
                         <li><Link href='/shop'><MdOutlineInventory2 /></Link></li>
                     </ul>
 
-                    <Link href="/shop/cart">
-                        <button className="flex relative text-white bg-amber-600 p-1.5 justify-end rounded-full">
-                            <IoCartOutline size={28} />
-                            {/* <span className="absolute -top-2 left-2 items-center font-bold text-gray-900 p-1 rounded-full">0</span> */}
-                        </button>
-                    </Link>
+                    <CartIcon />
                 </div>
 
                 <h1 className="font-sans-montserrat mt-4 text-center">Get new ambience and Look
@@ -46,6 +41,7 @@ export default function Shop() {
                     </span>
                 </h1>
             </header >
+
             <main className="flex flex-col items-center justify-center min-h-screen">
                 <Suspense fallback={<span className="font-sans-montserrat mb-20 text-[2rem] text-[#dddfcb] animate-bounce">Loading our products...</span>}>
                     <Sofas />

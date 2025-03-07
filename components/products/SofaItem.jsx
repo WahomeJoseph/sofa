@@ -1,12 +1,20 @@
 'use client'
 
+import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import { useState } from "react";
 import { MdAdd } from "react-icons/md";
 import { MdOutlineRemove } from "react-icons/md";
 
-export default function ProductItem({ name, description, price, image, material, color, in_stock }) {
+export default function ProductItem({ id, name, description, price, image, material, color, in_stock }) {
     const [quantity, setQuantity] = useState(1);
+
+    const {addToCart} = useCart()
+    const handleAddToCart= () => { //add sofa to the cart
+        if (in_stock) {
+            addToCart({id, name, description, price, image, material, color,in_stock})
+        }
+    }
 
     // quantity increase
     const increaseQuantity = () => {
@@ -20,7 +28,7 @@ export default function ProductItem({ name, description, price, image, material,
         }
     };
 
-    // Format price to display currency
+    // format price to display currency
     const formattedPrice = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -32,7 +40,7 @@ export default function ProductItem({ name, description, price, image, material,
                 <Image src={image} alt={name} fill className="object-cover hover:scale-110 transform transition-all duration-300" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
 
-            {/* Product Details */}
+            {/* product details */}
             <div className="p-4">
                 <h2 className="text-xl font-bold text-gray-900 mb-2">{name}</h2>
                 <p className="text-gray-600 text-sm mb-4">{description}</p>
@@ -51,8 +59,8 @@ export default function ProductItem({ name, description, price, image, material,
                     </span>
                 </div>
 
-                {/* Quantity Selector */}
-                <div className="flex w-full items-center px-3 py-1 rounded-lg mb-3 space-x-3 border border-gray-300 shadow-sm justify-around">
+                {/* quantity selector */}
+                {/* <div className="flex w-full items-center px-3 py-1 rounded-lg mb-3 space-x-3 border border-gray-300 shadow-sm justify-around">
                     <button onClick={decreaseQuantity} className="p-2 text-gray-900 border-r">
                         < MdOutlineRemove size={22} className="hover:bg-gray-100"/>
                     </button>
@@ -60,11 +68,12 @@ export default function ProductItem({ name, description, price, image, material,
                     <button onClick={increaseQuantity} className="p-2 text-gray-900 border-l">
                         <MdAdd size={22} className="transition-colors"/>
                     </button>
-                </div>
+                </div> */}
 
-                {/* Add to Cart Button */}
+                {/* add to cart button */}
                 <button
                     disabled={!in_stock}
+                    onClick={handleAddToCart}
                     className={`w-full py-2 px-4 ${in_stock
                         ? "bg-amber-600 hover:bg-amber-700 cursor-pointer"
                         : "bg-gray-400 cursor-not-allowed"

@@ -9,7 +9,7 @@ const db = sql('sofas.db')
 // .get Get all data from a single row
 // .run Insert data into db
 export async function getSofas() {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
+    await new Promise((resolve) => setTimeout(resolve, 2000))
     return db.prepare('SELECT * FROM sofas').all()
 
 }
