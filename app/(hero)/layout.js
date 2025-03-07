@@ -2,7 +2,7 @@ import { CartProvider } from "@/context/CartContext";
 import "../globals.css";
 
 export const metadata = {
-  title: "Welcome to Sofa Lux.",
+  title: "Welcome to Sofa Lux Shop.",
   description: "Elevate Your Living Room and Offices with Quality Sofas.",
 };
 
