@@ -22,17 +22,18 @@ export default function Cart() {
         <>
             <section className="bg-gray-950 h-screen border-t-2 border-gray-800 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-md p-10">
                 <header className="flex flex-row items-center justify-between mb-10 p-1">
-                    <h1 className="text-[1.5rem] text-[#ddd6cb] font-bold">My Sofa Cart</h1>
+                    <h1 className="text-[1.5rem] pl-4 uppercase text-[#ddd6cb]">My Sofa Cart</h1>
                     <Link href="/shop">
-                        <button className="flex text-amber-600 cursor-pointer rounded-full border hover:shadow-sm shadow-amber-500">
-                            <p className="flex space-x-2 p-2">
+                        <button className="flex text-amber-600 cursor-pointer rounded-full mr-3 border border-gray-800 hover:bg-amber-600 hover:text-gray-900">
+                            <p className="flex items-center space-x-2 p-2">
                                 <TiArrowBackOutline size={30} />
-                                <span className="text-xl">Products Page</span>
+                                <span className="uppercase text-base">Products Page</span>
                             </p>
                         </button>
                     </Link>
                 </header>
 
+                {/* main */}
                 <main className="container mx-auto p-4">
                     {cart.length === 0 ? (
                         <p className="text-xl text-amber-600 tracking-wide">Your Cart is Empty 😰 🥵. Proceed to Products Page!</p>
@@ -49,20 +50,20 @@ export default function Cart() {
                                             <th className="px-6 py-3 text-center text-sm font-medium text-[#ddd6cb] uppercase tracking-wider">Actions</th>
                                         </tr>
                                     </thead>
-                                    {/* body */}
+                                    {/* table body */}
                                     <tbody className="divide-y divide-gray-800">
                                         {cart.map((item) => (
                                             <tr key={item.id} className="p-3 px-12 mb-10 rounded-xs items-center">
                                                 {/* image */}
                                                 <td className="p-5">
-                                                    <div className="flex items-center">
-                                                        <Image src={item.image} alt={item.name} width={80} height={80}
+                                                    <div className="flex justify-center">
+                                                        <Image src={item.image} alt={item.name} width={100} height={100}
                                                             className="object-cover" />
                                                     </div>
                                                 </td>
                                                 {/* name */}
                                                 <td className="p-5">
-                                                    <h2 className="text-xl text-[#ddd6cb] font-semibold">{item.name}</h2>
+                                                    <h2 className="text-base text-[#ddd6cb] text-center">{item.name}</h2>
                                                 </td>
                                                 {/* quantity */}
                                                 <td className="p-5">
@@ -77,11 +78,11 @@ export default function Cart() {
                                                             <MdAdd size={22} className="hover:bg-gray-800 rounded" />
                                                         </button>
                                                     </div>
-                                                    <p className="text-xl text-gray-500">Quantity: {item.quantity}</p>
+                                                    <p className="text-base text-center text-gray-500">Quantity: {item.quantity}</p>
                                                 </td>
                                                 {/* total */}
                                                 <td className="p-5">
-                                                    <p className="text-lg text-[#ddd6cb] font-bold">
+                                                    <p className="text-base text-[#ddd6cb] text-center">
                                                         {new Intl.NumberFormat('en-US', {
                                                             style: 'currency',
                                                             currency: 'USD',
@@ -90,12 +91,12 @@ export default function Cart() {
                                                 </td>
 
                                                 <td className="p-2">
-                                                    <div className="flex flex-col p-0 justify-normal items-center group">
+                                                    <div className="flex flex-col p-0 justify-center items-center group">
                                                         <div onClick={() => removeFromCart(item.id)}
-                                                            className="text-center text-red-600 transition-transform duration-300 group-hover:scale-85 group-hover:origin-top">
-                                                            <RiDeleteBin2Fill size={22} />
+                                                            className="text-center text-red-500 transition-transform duration-300 group-hover:scale-85 group-hover:origin-top">
+                                                            <RiDeleteBin2Fill size={26} />
                                                         </div>
-                                                        <span className="text-red-700 font-bold text-base opacity-0 transition-opacity duration-300 group-hover:opacity-100">Remove From Cart</span>
+                                                        <span className="text-red-500 text-base opacity-0 transition-opacity duration-300 group-hover:opacity-100">Remove From Cart</span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -105,7 +106,7 @@ export default function Cart() {
                             </div>
                             {/* Almost There */}
                             <div className="mt-8">
-                                <p className="flex justify-end text-2xl p-1 text-[#ddd6cb] font-bold">
+                                <p className="flex justify-end text-xl p-1 text-[#ddd6cb]">
                                     Total: {new Intl.NumberFormat('en-US', {
                                         style: 'currency',
                                         currency: 'USD',
@@ -119,7 +120,7 @@ export default function Cart() {
                                     </button> */}
                                     <Link href='/shop/pay'>
                                         <button
-                                            className="bg-transparent border hover:bg-amber-600 hover:text-gray-950 text-amber-600 cursor-pointer px-4 py-2 rounded-md">
+                                            className="bg-transparent border hover:bg-amber-600 hover:text-gray-950 text-amber-600 uppercase text-base cursor-pointer px-4 py-2 rounded-md">
                                             {pending ? 'Checking Out...' : 'Pay Now'}
                                         </button>
                                     </Link>
