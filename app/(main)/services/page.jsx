@@ -19,7 +19,7 @@ export default function Services() {
                         {/* Service 1 */}
                         <div className="relative drop-shadow-xl overflow-hidden bg-gray-950 p-6 rounded-lg shadow-sm shadow-gray-700 hover:translate-x-2 transform-all duration-300">
                             <Image src={orange} alt="Service 3" className="w-full h-40 object-cover rounded-t-md" />
-                            <h2 className="text-2xl font-semibold mt-4 mb-2 text-[#ddd6cb]">Sofa Revamp</h2>
+                            <h2 className="text-2xl mt-4 mb-2 text-[#ddd6cb]">Sofa Revamp</h2>
                             <p className="text-[#ddd6cb] mb-4">Give your existing sofas a fresh new look with our professional revamping services.</p>
                             <Link href="/sofa-revamp">
                                 <span className="text-amber-600 font-bold hover:underline">Learn More</span>
@@ -30,7 +30,7 @@ export default function Services() {
                         {/* Service 2 */}
                         <div className="relative drop-shadow-xl overflow-hidden bg-gray-950 p-6 rounded-lg shadow-sm shadow-gray-700 hover:translate-x-2 transform-all duration-300">
                             <Image src={orange} alt="Service 3" className="w-full h-40 object-cover rounded-t-md" />
-                            <h2 className="text-2xl font-semibold mt-4 mb-2 text-[#ddd6cb]">Custom Sofa Design</h2>
+                            <h2 className="text-2xl mt-4 mb-2 text-[#ddd6cb]">Custom Sofa Design</h2>
                             <p className="text-[#ddd6cb] mb-4">Design your dream sofa with our custom design services. Choose the fabric, color, and style that fits your space perfectly.</p>
                             <Link href="/custom-sofa-design">
                                 <span className="text-amber-600 font-bold hover:underline">Learn More</span>
@@ -39,9 +39,9 @@ export default function Services() {
                         </div>
 
                         {/* Service 3 */}
-                        <div className="relative drop-shadow-xl overflow-hidden bg-gray-950 p-6 rounded-lg shadow-sm shadow-gray-700 hover:translate-x-2 transform-all duration-300">
+                        <div className="relative drop-shadow-xl overflow-hidden bg-gray-950 p-6 rounded-lg shadow-sm shadow-gray-800 hover:translate-x-2 transform-all duration-300">
                             <Image src={orange} alt="Service 3" className="w-full h-40 object-cover rounded-t-md" />
-                            <h2 className="text-2xl font-semibold mt-4 mb-2 text-[#ddd6cb]">Sofa Cleaning</h2>
+                            <h2 className="text-2xl mt-4 mb-2 text-[#ddd6cb]">Sofa Cleaning</h2>
                             <p className="text-[#ddd6cb] mb-4">Keep your sofas looking new with our professional cleaning services, ensuring they stay fresh and spotless.</p>
                             <Link href="/sofa-cleaning">
                                 <span className="text-amber-600 font-bold hover:underline">Learn More</span>

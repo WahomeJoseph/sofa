@@ -30,7 +30,7 @@ export default function ImageSlider() {
   }, []);
 
   return (
-    <div className="relative w-full h-full md:flex-row rounded-lg overflow-hidden" style={{ boxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.9)'}}>
+    <div className="relative w-full h-full md:flex-row rounded-lg overflow-hidden" style={{ boxShadow: '0 7 0.5rem rgba(0, 0, 0, 0.9)'}}>
       {sofas.map((image, index) => (
         <Image
           key={index}

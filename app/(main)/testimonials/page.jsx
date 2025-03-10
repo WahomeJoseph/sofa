@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import 'swiper/css'
+import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import { FaStar } from "react-icons/fa6"
@@ -59,20 +60,20 @@ const testimonials = [
 
 const Testimonial = () => {
   const sliderRef = useRef(null)
-  const [currentSlider, setCurrentSlider] = useState(0)
+  // const [currentSlider, setCurrentSlider] = useState(0)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlider((prevIndex) =>
-        prevIndex < testimonials.length - 1 ? prevIndex + 1 : 0
-      )
-      if (sliderRef.current) {
-        sliderRef.current.swiper.slideTo(currentSlider)
-      }
-    }, 5000)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentSlider((prevIndex) =>
+  //       prevIndex < testimonials.length - 1 ? prevIndex + 1 : 0
+  //     )
+  //     if (sliderRef.current) {
+  //       sliderRef.current.swiper.slideTo(currentSlider)
+  //     }
+  //   }, 5000)
 
-    return () => clearInterval(interval)
-  }, [currentSlider])
+  //   return () => clearInterval(interval)
+  // }, [currentSlider])
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return
@@ -89,7 +90,16 @@ const Testimonial = () => {
       <section className='pt-6 dark:bg-dark'>
         <h2 className="text-[2rem] p-1 flex justify-center text-amber-600 mb-12 rounded-sm font-bold font-sans-montserrat tracking-wide">Our Customer Reviews</h2>
         <div className='container mx-auto mb-20 relative'>
-          <Swiper slidesPerView={1} ref={sliderRef} className="transition-all duration-500 ease-in-out">
+          <Swiper
+            slidesPerView={1}
+            ref={sliderRef}
+            loop={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            className="transition-all duration-500 ease-in-out">
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
                 <SingleTestimonial {...testimonial} />
@@ -148,7 +158,7 @@ const SingleTestimonial = ({ image, reviewIcon, details, name, address }) => {
           </div>
 
           {/* test side info */}
-          <div className='w-full bg-gray-950 border border-gray-600 sm:mt-10 sm:mb-10 p-3 space-y-2 rounded-sm'>
+          <div className='w-full bg-gray-950 border border-gray-800 sm:mt-10 sm:mb-10 p-3 space-y-2 rounded-sm'>
             <div>
               <div className='mb-3'>
                 {reviewIcon}

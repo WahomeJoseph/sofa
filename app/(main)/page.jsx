@@ -14,17 +14,17 @@ export default function Home() {
 
         {/* side details */}
         <aside className="w-full max-w-[44rem] p-2">
-          <div className="text-[1.5rem] text-[#ddd6cb]">
-            <h1 className="text-[2rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent uppercase bg-gradient-to-r from-amber-900 to-amber-500" style={{
+          <div>
+            <h1 className="text-[2rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent uppercase bg-gradient-to-r from-amber-800 to-amber-500" style={{
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>Discover the comfort and style your living room and office with our exclusive variety of sofas</h1>
-            <p className="text-start leading-relaxed p-1 sm:text-justify">Visit us and get your sofas of your choice. We also do sofa revamp covers & fabric changes</p>
+            <p className="text-start text-base leading-relaxed p-1 sm:text-justify">Visit us and get your sofas of your choice. We also do sofa revamp covers & fabric changes</p>
           </div>
           <div className="flex gap-10 text-[1.5rem] sm:p-2 sm:mt-6 sm:justify-center sm:w-full">
-            <Link href='/services' className="inline-block mt-3 md:p-3 sm:p-2 border border-gray-600 rounded-md text-[#ddd6cb] font-bold hover:bg-gradient-to-r from-black to-amber-600 first:bg-transparent first:text-[#ff9b05] hover:text-[#ddd6cb]">Our Services</Link>
-            <Link href='/pricing' className="inline-block mt-3 md:p-3 sm:p-2 border border-gray-600 rounded-md text-[#ddd6cb] font-bold hover:bg-gradient-to-r from-black to-amber-600">Get Started</Link>
+            <Link href='/services' className="inline-block mt-3 md:p-3 sm:p-2 border border-gray-800 hover:border-amber-600 rounded-md text-[#ddd6cb] font-bold hover:text-amber-600 first:bg-transparent first:text-[#ff9b05]">Our Services</Link>
+            <Link href='/pricing' className="inline-block mt-3 md:p-3 sm:p-2 border border-gray-800 hover:border-amber-600 rounded-md text-[#ddd6cb] font-bold hover:text-amber-600">Get Started</Link>
           </div>
 
           {/* socials */}
