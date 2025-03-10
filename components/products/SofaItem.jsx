@@ -1,32 +1,30 @@
 'use client'
-
+import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
-import { useState } from "react";
-import { MdAdd } from "react-icons/md";
-import { MdOutlineRemove } from "react-icons/md";
+// import { useState } from "react";
 
-export default function ProductItem({ id, name, description, price, image, material, color, in_stock }) {
-    const [quantity, setQuantity] = useState(1);
+export default function ProductItem({ id, slug, name, description, price, image, material, color, in_stock }) {
+    // const [quantity, setQuantity] = useState(1);
 
-    const {addToCart} = useCart()
-    const handleAddToCart= () => { //add sofa to the cart
+    const { addToCart } = useCart()
+    const handleAddToCart = () => { //add sofa to the cart
         if (in_stock) {
-            addToCart({id, name, description, price, image, material, color,in_stock})
+            addToCart({ id, slug, name, description, price, image, material, color, in_stock })
         }
     }
 
     // quantity increase
-    const increaseQuantity = () => {
-        setQuantity((prev) => prev + 1);
-    };
+    // const increaseQuantity = () => {
+    //     setQuantity((prev) => prev + 1);
+    // };
 
     // quantity decrease
-    const decreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity((prev) => prev - 1);
-        }
-    };
+    // const decreaseQuantity = () => {
+    //     if (quantity > 1) {
+    //         setQuantity((prev) => prev - 1);
+    //     }
+    // };
 
     // format price to display currency
     const formattedPrice = new Intl.NumberFormat("en-US", {
@@ -37,7 +35,9 @@ export default function ProductItem({ id, name, description, price, image, mater
     return (
         <section className="flex flex-col w-full max-w-sm bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative h-50 w-full">
-                <Image src={image} alt={name} fill className="object-cover hover:scale-110 transform transition-all duration-300" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                <Link href={`/shop/${slug}`}>
+                    <Image src={image} alt={name} fill className="object-cover hover:scale-110 transform transition-all duration-300" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                </Link>
             </div>
 
             {/* product details */}

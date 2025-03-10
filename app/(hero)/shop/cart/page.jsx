@@ -1,10 +1,13 @@
 'use client'
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
+import Image from "next/image";
+import { useFormStatus } from 'react-dom'
+
 import { TiArrowBackOutline } from "react-icons/ti";
 import { MdAdd } from "react-icons/md";
 import { MdOutlineRemove } from "react-icons/md";
-import { useFormStatus } from 'react-dom'
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 export default function Cart() {
     const { pending } = useFormStatus()
@@ -17,7 +20,7 @@ export default function Cart() {
 
     return (
         <>
-            <section className="bg-gray-950 h-screen border-t border-gray-500 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-md p-10">
+            <section className="bg-gray-950 h-screen border-t-2 border-gray-800 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-md p-10">
                 <header className="flex flex-row items-center justify-between mb-10 p-1">
                     <h1 className="text-[1.5rem] text-[#ddd6cb] font-bold">My Sofa Cart</h1>
                     <Link href="/shop">
@@ -35,47 +38,71 @@ export default function Cart() {
                         <p className="text-xl text-amber-600 tracking-wide">Your Cart is Empty 😰 🥵. Proceed to Products Page!</p>
                     ) : (
                         <>
-                            <div className="space-y-4">
-                                {cart.map((item) => (
-                                    <div key={item.id} className="flex justify-between p-3 px-12 mb-10 rounded-xs bg-black items-center border-b border-gray-500 rounded-b">
-                                        <div>
-                                            <h2 className="text-xl text-[#ddd6cb] font-semibold">{item.name}</h2>
-                                            <p className="text-xl text-gray-500">Quantity: {item.quantity}</p>
-                                            {/* <div className="text-gray-600">Image: {item.image}</div> */}
-                                        </div>
+                            <div className="overflow-x-auto">
+                                <table className="min-w-full border border-gray-800">
+                                    <thead>
+                                        <tr className="bg-gray-950 border-b border-gray-800">
+                                            <th className="px-6 py-3 text-center text-sm font-medium text-[#ddd6cb] uppercase tracking-wider">Item image</th>
+                                            <th className="px-6 py-3 text-center text-sm font-medium text-[#ddd6cb] uppercase tracking-wider">Item name</th>
+                                            <th className="px-6 py-3 text-center text-sm font-medium text-[#ddd6cb] uppercase tracking-wider">Quantity</th>
+                                            <th className="px-6 py-3 text-center text-sm font-medium text-[#ddd6cb] uppercase tracking-wider">Total</th>
+                                            <th className="px-6 py-3 text-center text-sm font-medium text-[#ddd6cb] uppercase tracking-wider">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    {/* body */}
+                                    <tbody className="divide-y divide-gray-800">
+                                        {cart.map((item) => (
+                                            <tr key={item.id} className="p-3 px-12 mb-10 rounded-xs items-center">
+                                                {/* image */}
+                                                <td className="p-5">
+                                                    <div className="flex items-center">
+                                                        <Image src={item.image} alt={item.name} width={80} height={80}
+                                                            className="object-cover" />
+                                                    </div>
+                                                </td>
+                                                {/* name */}
+                                                <td className="p-5">
+                                                    <h2 className="text-xl text-[#ddd6cb] font-semibold">{item.name}</h2>
+                                                </td>
+                                                {/* quantity */}
+                                                <td className="p-5">
+                                                    <div className="flex items-center justify-center rounded-md mb-2 space-x-4 border border-gray-800 shadow-sm">
+                                                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                            className="p-2 text-[#ddd6cb] border-r border-gray-800">
+                                                            <MdOutlineRemove size={22} className="hover:bg-gray-800 rounded" />
+                                                        </button>
+                                                        <span className="text-amber-600 text-xl">{item.quantity}</span>
+                                                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                            className="p-2 text-[#ddd6cb] border-l border-gray-800">
+                                                            <MdAdd size={22} className="hover:bg-gray-800 rounded" />
+                                                        </button>
+                                                    </div>
+                                                    <p className="text-xl text-gray-500">Quantity: {item.quantity}</p>
+                                                </td>
+                                                {/* total */}
+                                                <td className="p-5">
+                                                    <p className="text-lg text-[#ddd6cb] font-bold">
+                                                        {new Intl.NumberFormat('en-US', {
+                                                            style: 'currency',
+                                                            currency: 'USD',
+                                                        }).format(item.price * item.quantity)}
+                                                    </p>
+                                                </td>
 
-                                        <div className="flex flex-col items-center space-y-3 space-x-4">
-                                            {/* quantity selector */}
-                                            <div className="flex items-center rounded-md mb-3 space-x-3 border border-gray-500 shadow-sm">
-                                                <button onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                                    className="p-2 text-[#ddd6cb] border-r border-gray-500">
-                                                    <MdOutlineRemove size={22} className="hover:bg-gray-800 rounded" />
-                                                </button>
-                                                <span className="text-amber-600 text-xl">{item.quantity}</span>
-                                                <button onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                                    className="p-2 text-[#ddd6cb] border-l border-gray-500">
-                                                    <MdAdd size={22} className="hover:bg-gray-800 rounded" />
-                                                </button>
-                                            </div>
-
-                                            <div>
-                                                <p className="text-lg text-[#ddd6cb] font-bold">
-                                                    {new Intl.NumberFormat('en-US', {
-                                                        style: 'currency',
-                                                        currency: 'USD',
-                                                    }).format(item.price * item.quantity)}
-                                                </p>
-                                                <button
-                                                    onClick={() => removeFromCart(item.id)}
-                                                    className="text-red-600 hover:text-red-800">
-                                                    Remove from cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
+                                                <td className="p-2">
+                                                    <div className="flex flex-col p-0 justify-normal items-center group">
+                                                        <div onClick={() => removeFromCart(item.id)}
+                                                            className="text-center text-red-600 transition-transform duration-300 group-hover:scale-85 group-hover:origin-top">
+                                                            <RiDeleteBin2Fill size={22} />
+                                                        </div>
+                                                        <span className="text-red-700 font-bold text-base opacity-0 transition-opacity duration-300 group-hover:opacity-100">Remove From Cart</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
-
                             {/* Almost There */}
                             <div className="mt-8">
                                 <p className="flex justify-end text-2xl p-1 text-[#ddd6cb] font-bold">
@@ -85,11 +112,11 @@ export default function Cart() {
                                     }).format(totalPrice)}
                                 </p>
                                 <div className="w-full flex p-2 justify-between space-x-10 mr-2">
-                                    <button
+                                    {/* <button
                                         onClick={clearCart}
                                         className="bg-red-600 text-[#ddd6cb] cursor-pointer px-4 py-2 rounded-md">
                                         {pending ? 'Clearing Cart' : 'Clear Cart'}
-                                    </button>
+                                    </button> */}
                                     <Link href='/shop/pay'>
                                         <button
                                             className="bg-transparent border hover:bg-amber-600 hover:text-gray-950 text-amber-600 cursor-pointer px-4 py-2 rounded-md">

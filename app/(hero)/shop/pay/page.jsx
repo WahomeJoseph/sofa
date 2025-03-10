@@ -5,9 +5,9 @@ import { useCart } from '@/context/CartContext';
 import { useEffect, useState } from 'react';
 
 import { FaPaypal } from "react-icons/fa6";
-import { FaRegCreditCard } from "react-icons/fa";
+// import { FaRegCreditCard } from "react-icons/fa";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
 export default function Payment() {
     const { cart, clearCart } = useCart();
@@ -61,8 +61,8 @@ export default function Payment() {
             <div className="container mx-auto bg-transarent mt-10 p-4">
                 <h2 className="text-3xl text-center font-bold mb-5">Make Payment Here</h2>
 
-                <form className="bg-gray-900 h-[30rem] p-6 mx-[20rem] rounded-lg shadow-md">
-                    <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+                <form className="bg-gray-950 border-t-2 border-gray-800 h-[30rem] p-6 mx-[20rem] rounded-lg shadow-md">
+                    <h2 className="text-xl font-semi-bold mb-4">Order Summary</h2>
                     <div className="space-y-4">
                         {cart.map((item) => (
                             <div key={item.id} className="flex justify-between items-center border-b pb-4">
@@ -81,7 +81,7 @@ export default function Payment() {
                     </div>
                     {/* total price */}
                     <div className="mt-8">
-                        <p className="text-2xl font-bold">
+                        <p className="text-2xl font-semi-bold">
                             Total: {new Intl.NumberFormat('en-US', {
                                 style: 'currency',
                                 currency: 'USD',
@@ -89,14 +89,9 @@ export default function Payment() {
                         </p>
                     </div>
                     {/* choose payment method */}
-                    <div className='grid grid-cols-3 space-x-3'>
-                            <FaPaypal />
-                            <FaRegCreditCard />
-                        </div>
-
                     <div className="mt-8">
                         <h2 className="text-xl font-semibold mb-4">Choose Payment Method</h2>
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-3 gap-4">
                             <button
                                 onClick={() => handlePayment('stripe')}
                                 disabled={loading}
@@ -106,8 +101,14 @@ export default function Payment() {
                             <button
                                 onClick={() => handlePayment('paypal')}
                                 disabled={loading}
-                                className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                                {loading ? 'Processing...' : 'Pay with PayPal'}
+                                className="w-full bg-blue-600 text-center text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                {loading ? 'Processing...' : <FaPaypal />}
+                            </button>
+                            <button
+                                onClick={() => handlePayment('paypal')}
+                                disabled={loading}
+                                className="w-full bg-blue-600 text-center text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                {loading ? 'Processing...' : <FaPaypal />}
                             </button>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-// import Navbg from "@/components/nav/Navbg";
 import Navigation from "@/components/nav/Navigation";
 import "../globals.css";
 
@@ -11,8 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <Navbg/> */}
-        <Navigation/>
+        <Navigation />
         {children}
       </body>
     </html>
