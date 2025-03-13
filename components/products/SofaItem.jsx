@@ -2,9 +2,10 @@
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import { Suspense } from "react";
 // import { useState } from "react";
 
-export default function ProductItem({ id, slug, name, description, price, image, material, color, in_stock }) {
+export default function SofaItem({ id, slug, name, description, price, image, material, color, in_stock }) {
     // const [quantity, setQuantity] = useState(1);
 
     const { addToCart } = useCart()
@@ -23,9 +24,12 @@ export default function ProductItem({ id, slug, name, description, price, image,
     return (
         <section className="flex flex-col w-full max-w-sm bg-transparent hover:scale-105 overflow-hidden rounded-lg  border border-gray-800 transition duration-300">
             <div className="relative h-50 w-full m-auto bg-transparent">
-                <Link href={`/shop/${slug}`}>
-                    <Image src={image} alt={name} fill className="object-cover hover:scale-101 transform transition-all duration-300" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                </Link>
+                <Suspense fallback={<p>Loading...</p>}>
+                    <Link href={`/shop/${slug}`}>
+                        <Image src={image} alt={name} fill className="object-cover hover:scale-101 transform transition-all duration-300" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </Link>
+                </Suspense>
+
             </div>
 
             {/* product details */}

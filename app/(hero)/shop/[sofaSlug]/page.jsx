@@ -29,9 +29,9 @@ export default async function SofaCard({ params }) {
 
     return (
         <>
-            <header className="relative h-[400px] md:h-[500px] lg:h-[600px]">
+            <section className="grid grid-cols-2 h-[400px] md:h-[500px] lg:h-[600px]">
                 {/* Sofa Image */}
-                <div className="relative w-full h-full">
+                <div className="relative m-20 w-full max-w-[40rem] h-[30rem] rounded-md overflow-hidden">
                     <Image
                         src={sofas.image}
                         alt={sofas.name}
@@ -43,7 +43,7 @@ export default async function SofaCard({ params }) {
                 </div>
 
                 {/* Overlay for Text */}
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4">
+                <div className="inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#ddd6cb] mb-4">
                         {sofas.name}
                     </h1>
@@ -52,17 +52,7 @@ export default async function SofaCard({ params }) {
                         {sofas.description}
                     </p>
                 </div>
-            </header>
-
-            {/* Main Content Section */}
-            <main className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
-                <div className="prose prose-lg max-w-none">
-                    <p
-                        dangerouslySetInnerHTML={{ __html: sofas.description }}
-                        className="text-[#ddd6cb]"
-                    ></p>
-                </div>
-            </main>
+            </section>
         </>
     );
 }

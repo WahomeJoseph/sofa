@@ -20,7 +20,7 @@ export default function Cart() {
 
     return (
         <>
-            <section className="bg-transparent h-screen border-t-2 border border-gray-800 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-sm p-10">
+            <section className="bg-transparent h-screen border-t-2 border-gray-800 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-sm p-10">
                 <header className="flex flex-row items-center justify-between mb-10 p-1">
                     <h1 className="text-[1.5rem] pl-4 uppercase text-[#ddd6cb]">My Sofa Cart</h1>
                     <Link href="/shop">
