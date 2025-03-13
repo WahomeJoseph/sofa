@@ -23,14 +23,14 @@ export default function Shop() {
             <header className="w-[90%] max-w-[95rem] gap-10 mx-10 mt-10 text-[#ddd6cb] text-[1.5rem]">
 
                 <div className="flex w-full justify-between mb-3 p-1">
-                    <ul className='flex font-montserrat p-2 md:flex-row md:space-x-12 ml-12'>
+                    <ul className='flex font-montserrat p-2 md:flex-row md:space-x-2 sm:gap-14 ml-12'>
                         <li><Link href='/'><FaHome size={28}/></Link></li>
                         <li><Link href='/shop'><MdOutlineInventory2 size={28}/></Link></li>
                     </ul>
                     <CartIcon />
                 </div>
 
-                <h1 className="font-sans-montserrat uppercase mt-4 text-xl text-center">Get New Ambience from
+                <h1 className="uppercase mt-4 text-xl text-center">Elevate your office and home from
                     <span className="text-amber-600"> Sofa Lux Shop
                     </span>
                 </h1>

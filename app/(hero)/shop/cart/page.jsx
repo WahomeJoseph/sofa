@@ -20,7 +20,7 @@ export default function Cart() {
 
     return (
         <>
-            <section className="bg-gray-950 h-screen border-t-2 border-gray-800 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-md p-10">
+            <section className="bg-transparent h-screen border-t-2 border border-gray-800 my-20 md:mx-[10rem] sm:mx-[4rem] rounded-sm p-10">
                 <header className="flex flex-row items-center justify-between mb-10 p-1">
                     <h1 className="text-[1.5rem] pl-4 uppercase text-[#ddd6cb]">My Sofa Cart</h1>
                     <Link href="/shop">
@@ -34,12 +34,12 @@ export default function Cart() {
                 </header>
 
                 {/* main */}
-                <main className="container mx-auto p-4">
+                <main className="mx-auto p-4">
                     {cart.length === 0 ? (
                         <p className="text-xl text-amber-600 tracking-wide">Your Cart is Empty 😰 🥵. Proceed to Products Page!</p>
                     ) : (
                         <>
-                            <div className="overflow-x-auto">
+                            <div className="overflow-y-auto overflow-x-auto">
                                 <table className="min-w-full border border-gray-800">
                                     <thead>
                                         <tr className="bg-gray-950 border-b border-gray-800">

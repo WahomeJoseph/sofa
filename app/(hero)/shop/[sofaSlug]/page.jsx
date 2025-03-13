@@ -2,32 +2,41 @@ import { getSofa } from "@/utils/Products";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-export async function generateMetadata() {
-    return {
-        title: 'Sofa Lux Products',
-        description: 'Welcome to Sofa Lux',
-    };
-}
-
-export default async function SofaCard({ params }) {
-    const { slug } = params; 
-    const sofas = await getSofa(slug);
+export async function generateMetadata({ params }) {
+    const { sofaSlug } = await params;
+    const sofas = await getSofa(sofaSlug);
 
     if (!sofas) {
         notFound();
     }
+
+    return {
+        title: sofas.name,
+        description: sofas.description,
+    };
+}
+
+export default async function SofaCard({ params }) {
+    const { sofaSlug } = await params;
+    const sofas = await getSofa(sofaSlug);
+
+    if (!sofas) {
+        notFound();
+    }
+
+    // Replace newlines with <br /> for HTML rendering
     sofas.description = sofas.description.replace(/\n/g, '<br />');
 
     return (
         <>
-            <header className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            <header className="relative h-[400px] md:h-[500px] lg:h-[600px]">
                 {/* Sofa Image */}
                 <div className="relative w-full h-full">
                     <Image
                         src={sofas.image}
                         alt={sofas.name}
                         fill
-                        priority
+                        loading="lazy"
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
@@ -38,7 +47,7 @@ export default async function SofaCard({ params }) {
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#ddd6cb] mb-4">
                         {sofas.name}
                     </h1>
-                    <p className="text-xl md:text-2xl text-amber-600 mb-4">By Sofa Lux</p>
+                    <p className="text-xl md:text-2xl text-amber-600 mb-4">By Sofa Lux {sofas.price}</p>
                     <p className="text-lg md:text-xl text-[#ddd6cb] max-w-2xl">
                         {sofas.description}
                     </p>
