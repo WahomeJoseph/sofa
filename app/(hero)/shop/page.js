@@ -2,14 +2,15 @@ import Link from "next/link";
 import { Suspense } from "react"
 import SofaGrid from "@/components/products/SofaGrid";
 import { getSofas } from "@/utils/Products";
+
 import { FaHome } from "react-icons/fa";
-import { MdOutlineInventory2 } from "react-icons/md";
+import { MdInventory2 } from "react-icons/md";
 import CartIcon from "@/components/cart/CartIcon";
 
-export const metadata = {
-    title: 'Sofa Lux Products',
-    description: 'Elevate Your Living Room and Offices with Quality Sofas.',
-};
+// export const metadata = {
+//     title: 'Sofa Lux Products',
+//     description: 'Elevate Your Living Room and Offices with Quality Sofas.',
+// };
 
 // sofadata fetching using a component fnc
 const Sofas = async () => {
@@ -25,7 +26,7 @@ export default function Shop() {
                 <div className="flex w-full justify-between mb-3 p-1">
                     <ul className='flex font-montserrat p-2 md:flex-row md:space-x-2 sm:gap-14 ml-12'>
                         <li><Link href='/'><FaHome size={28}/></Link></li>
-                        <li><Link href='/shop'><MdOutlineInventory2 size={28}/></Link></li>
+                        <li><Link href='/shop'><MdInventory2 size={28}/></Link></li>
                     </ul>
                     <CartIcon />
                 </div>

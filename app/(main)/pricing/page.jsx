@@ -1,10 +1,10 @@
-import { FaXTwitter, FaPhone, FaPinterestP, FaTiktok, FaInstagram } from "react-icons/fa6";
+import { FaXTwitter, FaPinterestP, FaTiktok, FaInstagram, FaPhone } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 
 export async function generateMetadata() {
   return {
-      title: 'Sofa Lux Pricing and Offers',
-      description: "Elevate Your Living Room and Offices with Quality Sofas.",
+    title: 'Sofa Lux Pricing and Offers',
+    description: "Elevate Your Living Room and Offices with Quality Sofas.",
   }
 }
 
@@ -14,19 +14,14 @@ export default function Pricing() {
       <div className="bg-transparent">
         <div className="md:m-auto md:px-6 md:py-6 sm:p-10 sm:mx-10 md:px-8 lg:px-20">
           <div className="mx-auto tracking-wide text-center lg:w-10/12 xl:w-7/12">
-            <h2 className="text-[2rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent uppercase bg-gradient-to-r from-amber-900 to-amber-500" style={{
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>Explore our Exclusive Sofa Collection Pricing and Plan</h2>
+            <h2 className="text-[2rem] p-1 text-amber-600 rounded-sm font-bold font-sans-montserrat tracking-wide">Our Exclusive Pricing and Plan</h2>
           </div>
 
           <div className="mt-10 m-auto -space-y-4 items-center justify-center md:flex md:space-y-0 md:-space-x-8 xl:w-10/12">
-            {/* side bar */}
             <div className="relative z-10 -mx-4 group md:w-6/12 md:mx-0 lg:w-5/12">
-              <div aria-hidden="true" className="absolute top-0 w-full h-full rounded-2xl bg-gray-950 border border-gray-600 shadow-lg transition duration-500 group-hover:scale-105 lg:group-hover:scale-105"></div>
-              <div className="relative p-6 space-y-6 lg:p-8">
-                <h3 className="text-3xl text-amber-600 font-bold text-center">Luxury Sofas</h3>
+              <div aria-hidden="true" className="absolute top-0 w-full h-full rounded-2xl bg-transparent border border-gray-800 shadow-lg transition duration-500 hover:scale-105"></div>
+              <div className="relative p-6 space-y-6 lg:p-8 hover:scale-105 transition duration-500">
+                <h3 className="text-3xl text-amber-600 font-bold text-center">Sofa Lux</h3>
 
                 <div>
                   <div className="relative flex justify-around">
@@ -61,7 +56,7 @@ export default function Pricing() {
                 <p className="flex items-center justify-center space-x-4 text-lg text-gray-600 text-center">
                   <span>Call us:</span>
                   <a href="tel:+254795969757" className="flex space-x-2 items-center text-amber-600">
-                  <FaPhone /><span className="font-bold">+2547 959 69 757</span>
+                    <FaPhone /><span className="font-bold">+2547 959 69 757</span>
                   </a>
                 </p>
                 <button type="submit" title="Submit" className="block w-full py-3 px-6 text-center rounded-md transition bg-amber-700 border border-gray-600 active:bg-purple-800 focus:bg-indigo-600">
@@ -74,10 +69,9 @@ export default function Pricing() {
               </div>
             </div>
 
-            {/* 2nd side card */}
             <div className="relative group md:w-6/12 lg:w-7/12">
-              <div aria-hidden="true" className="absolute top-0 w-full h-full rounded-2xl bg-gray-950 border border-gray-600 shadow-lg transition duration-500 group-hover:scale-105"></div>
-              <div className="relative p-6 pt-16 md:p-8 md:pl-12 md:rounded-r-2xl lg:pl-20 lg:p-16">
+              <div aria-hidden="true" className="absolute top-0 w-full h-full rounded-2xl bg-transparent border border-gray-800 shadow-lg transition duration-500"></div>
+              <div className="relative p-6 pt-16 md:p-8 md:pl-12 md:rounded-r-2xl lg:pl-20 lg:p-16 hover:scale-105 transition duration-500">
                 <ul role="list" className="space-y-4 py-6 text-gray-600">
                   <li className="space-x-2">
                     <span className="text-amber-600 font-bold">&#10003;</span>
@@ -99,33 +93,33 @@ export default function Pricing() {
                 <p className="text-gray-600">Transform your home or office with our luxurious sofas. Check out our socials</p>
                 {/* <div className="mt-6 flex justify-between items-center mx-auto p-2 bg-red-600"> */}
 
-                  <ul className="flex justify-between mx-10 space-x-4 p-4 rounded-sm mt-10">
+                <ul className="flex justify-between mx-10 space-x-4 p-4 rounded-sm mt-10">
                   <li>
-                      <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaXTwitter size={30}/>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaInstagram size={30}/>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaPinterestP size={30}/>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaFacebookF size={30}/>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
-                        <FaTiktok size={30}/>
-                      </a>
-                    </li>
-                  </ul>
+                    <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
+                      <FaXTwitter size={30} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
+                      <FaPinterestP size={30} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
+                      <FaTiktok size={30} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
+                      <FaInstagram size={30} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-[#ddd6cb] hover:shadow-[0px_20px_207px_10px_rgba(20,_30,_203,_0.88)]">
+                      <FaFacebookF size={30} />
+                    </a>
+                  </li>
+                </ul>
                 {/* </div> */}
               </div>
             </div>

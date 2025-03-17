@@ -1,12 +1,15 @@
 'use client'
 import Image from 'next/image'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useRef } from 'react'
 import 'swiper/css'
 import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { GrNext, GrPrevious } from 'react-icons/gr'
-import { FaStar } from "react-icons/fa6"
+
 import { RiDoubleQuotesL } from "react-icons/ri";
+import { FaRegStar } from "react-icons/fa6";
+import { GrPrevious } from "react-icons/gr";
+import { GrNext } from "react-icons/gr";
+
 
 // export async function generateMetadata() {
 //   return {
@@ -178,7 +181,7 @@ const SingleTestimonial = ({ image, reviewIcon, details, name, address }) => {
                 </span>
                 <ul className='flex flex-row text-amber-600 space-x-1 pr-10'>
                   {[...Array(5)].map((_, i) => (
-                    <li key={i}><FaStar /></li>
+                    <li key={i}><FaRegStar /></li>
                   ))}
                 </ul>
               </div>

@@ -29,36 +29,50 @@ export default function Home() {
 
           {/* socials */}
           <div className="flex flex-row mt-14 m-auto space-x-8 justify-center items-center">
-            <div className="flex flex-col items-center group">
-              <div className="flex justify-center items-center w-14 h-14 rounded-full bg-gray-900 text-[#ddd6cb] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
-                <FaXTwitter size={20}/>
+            <Link href='https://x.com/WachiraJoseph17'>
+              <div className="flex flex-col items-center group">
+                <div className="flex justify-center items-center w-14 h-14 rounded-full bg-gray-900 text-[#ddd6cb] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
+                  <FaXTwitter size={20} />
+                </div>
+                <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-1 transition-opacity duration-300 group-hover:opacity-100">Twitter</span>
               </div>
-              <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">Twitter</span>
-            </div>
-            <div className="flex flex-col items-center group">
-              <div className="flex justify-center items-center w-14 h-14 rounded-full bg-amber-600 text-gradient bg-gradient-to-r from-[#f58529] via-[#dd2a7b] to-[#8134af] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
-                <FaInstagram size={20}/>
+            </Link>
+
+            <Link href='https://x.com/WachiraJoseph17'>
+              <div className="flex flex-col items-center group">
+                <div className="flex justify-center items-center w-14 h-14 rounded-full bg-amber-600 text-gradient bg-gradient-to-r from-[#f58529] via-[#dd2a7b] to-[#8134af] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
+                  <FaInstagram size={20} />
+                </div>
+                <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-1 transition-opacity duration-300 group-hover:opacity-100">Instagram</span>
               </div>
-              <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">Instagram</span>
-            </div>
-            <div className="flex flex-col items-center group">
-              <div className="flex justify-center items-center w-14 h-14 rounded-full bg-red-700 text-[#ddd6cb] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
-                <FaPinterestP size={20}/>
+            </Link>
+
+            <Link href='https://x.com/WachiraJoseph17'>
+              <div className="flex flex-col items-center group">
+                <div className="flex justify-center items-center w-14 h-14 rounded-full bg-red-700 text-[#ddd6cb] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
+                  <FaPinterestP size={20} />
+                </div>
+                <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-1 transition-opacity duration-300 group-hover:opacity-100">Pinterest</span>
               </div>
-              <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">Pinterest</span>
-            </div>
-            <div className="flex flex-col items-center group">
-              <div className="flex justify-center items-center w-14 h-14 rounded-full bg-blue-600 text-[#ddd6cb] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
-                <FaFacebookF size={20}/>
+            </Link>
+
+            <Link href='https://x.com/WachiraJoseph17'>
+              <div className="flex flex-col items-center group">
+                <div className="flex justify-center items-center w-14 h-14 rounded-full bg-blue-600 text-[#ddd6cb] transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
+                  <FaFacebookF size={20} />
+                </div>
+                <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-1 transition-opacity duration-300 group-hover:opacity-100">Facebook</span>
               </div>
-              <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">Facebook</span>
-            </div>
-            <div className="flex flex-col items-center group">
-              <div className="flex justify-center items-center w-14 h-14 rounded-full bg-gradient-to-r from-[#25F4EE] to-[#FE2C55] text-white transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
-                <FaTiktok size={20}/>
+            </Link>
+
+            <Link href='https://x.com/WachiraJoseph17'>
+              <div className="flex flex-col items-center group">
+                <div className="flex justify-center items-center w-14 h-14 rounded-full bg-gradient-to-r from-[#25F4EE] to-[#FE2C55] text-white transition-transform duration-300 group-hover:scale-75 group-hover:origin-top">
+                  <FaTiktok size={20} />
+                </div>
+                <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-1 transition-opacity duration-300 group-hover:opacity-100">Tiktok</span>
               </div>
-              <span className="text-[#ddd6cb] font-bold text-sm mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">Tiktok</span>
-            </div>
+            </Link>
           </div>
         </aside>
       </header>

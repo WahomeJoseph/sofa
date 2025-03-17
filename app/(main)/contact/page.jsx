@@ -2,20 +2,21 @@ import Image from 'next/image';
 import form from '@/assets/contact.jpg';
 import Submit from '@/components/button/Submit';
 
-export async function generateMetadata() {
-    return {
-        title: 'Reach Out To Sofa Lux',
-        description: "Elevate Your Living Room and Offices with Quality Sofas.",
-    }
-}
+// export async function generateMetadata() {
+//     return {
+//         title: 'Reach Out To Sofa Lux',
+//         description: "Elevate Your Living Room and Offices with Quality Sofas.",
+//     }
+// }
 
 export default function Contact() {
     return (
         <>
-            <div className='relative h-screen flex flex-col'>
+            <section className='relative h-screen flex flex-col'>
                 <div className='md:h-1/2 sm:h-2/3 relative opacity-50'>
                     <Image src={form} layout='fill' objectFit='cover' alt='contact image' />
                 </div>
+                
                 <div className='h-1/2 bg-transparent'></div>
                 <div className='absolute inset-0 flex flex-col items-center justify-center'>
                     <h2 className='text-[2rem] text-amber-600 font-bold mb-2 text-center'>Contact Us</h2>
@@ -56,7 +57,7 @@ export default function Contact() {
                         </div>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     );
 };

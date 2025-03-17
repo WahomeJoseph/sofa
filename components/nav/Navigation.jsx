@@ -54,11 +54,6 @@ export default function Navigation() {
                                             Merch
                                         </Link>
                                     </li>
-                                    <li>
-                                        <Link href="" className="block py-2 px-4 hover:text-amber-600 hover:translate-x-1 cursor-pointer">
-                                            Backend
-                                        </Link>
-                                    </li>
                                 </ul>
                             </li>
 

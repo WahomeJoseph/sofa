@@ -8,12 +8,12 @@ import gray from '@/assets/gray-sofa.jpg'
 import orange from '@/assets/orange-sofa.jpg'
 import seater from '@/assets/one-seater.jpg'
 
-export async function generateMetadata() {
-    return {
-        title: 'Who is Sofa Lux?',
-        description: "Elevate Your Living Room and Offices with Quality Sofas.",
-    }
-}
+// export async function generateMetadata() {
+//     return {
+//         title: 'Who is Sofa Lux?',
+//         description: "Elevate Your Living Room and Offices with Quality Sofas.",
+//     }
+// }
 
 export default function About() {
     return (
@@ -73,20 +73,6 @@ export default function About() {
                             <Image src={seater} layout="fill" objectFit="cover" alt="gatewood" className="rounded-lg shadow-lg" />
                         </div>
                     </div>
-                </div>
-                <div className="grid grid-cols-3 md:gap-12 md:mx-18 sm:mx-6 sm:mb-10 sm:gap-4 mb-4 mt-2">
-                    <article className="flex flex-col space-x-2 p-3 border border-gray-800 rounded-sm">
-                        <h3 className="text-[1.2rem] text-center text-amber-600">Why Choose SofaLux</h3>
-                        <span className="text-base text-center text-[#ddd6cb]">Discover the comfort and style your living room and office with our exclusive variety of sofas</span>
-                    </article>
-                    <article className="flex flex-col space-x-2 p-3 border border-gray-800 rounded-sm">
-                        <h3 className="text-[1.2rem] text-center text-amber-600">Why Choose SofaLux</h3>
-                        <span className="text-base text-center text-[#ddd6cb]">Discover the comfort and style your living room and office with our exclusive variety of sofas</span>
-                    </article>
-                    <article className="flex flex-col space-x-2 p-3 border border-gray-800 rounded-sm">
-                        <h3 className="text-[1.2rem] text-center text-amber-600">Why Choose SofaLux</h3>
-                        <span className="text-base text-center text-[#ddd6cb]">Discover the comfort and style your living room and office with our exclusive variety of sofas</span>
-                    </article>
                 </div>
             </section>
         </>

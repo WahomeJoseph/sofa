@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useFormStatus } from 'react-dom'
 
-import { TiArrowBackOutline } from "react-icons/ti";
-import { MdAdd } from "react-icons/md";
-import { MdOutlineRemove } from "react-icons/md";
-import { RiDeleteBin2Fill } from "react-icons/ri";
+import { PiArrowCircleLeftFill } from "react-icons/pi";
+import { IoAdd } from "react-icons/io5";
+import { IoRemove } from "react-icons/io5";
+import { CiCircleRemove } from "react-icons/ci";
 
 export default function Cart() {
     const { pending } = useFormStatus()
@@ -26,7 +26,7 @@ export default function Cart() {
                     <Link href="/shop">
                         <button className="flex text-amber-600 cursor-pointer rounded-full mr-3 border border-gray-800 hover:bg-amber-600 hover:text-gray-900">
                             <p className="flex items-center space-x-2 p-2">
-                                <TiArrowBackOutline size={30} />
+                                <PiArrowCircleLeftFill size={30} />
                                 <span className="uppercase text-base">Products Page</span>
                             </p>
                         </button>
@@ -70,12 +70,12 @@ export default function Cart() {
                                                     <div className="flex items-center justify-center rounded-md mb-2 space-x-4 border border-gray-800 shadow-sm">
                                                         <button onClick={() => updateQuantity(item.id, item.quantity - 1)}
                                                             className="p-2 text-[#ddd6cb] border-r border-gray-800">
-                                                            <MdOutlineRemove size={22} className="hover:bg-gray-800 rounded" />
+                                                            <IoRemove size={22} className="hover:bg-gray-800 rounded" />
                                                         </button>
                                                         <span className="text-amber-600 text-xl">{item.quantity}</span>
                                                         <button onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                                             className="p-2 text-[#ddd6cb] border-l border-gray-800">
-                                                            <MdAdd size={22} className="hover:bg-gray-800 rounded" />
+                                                            <IoAdd size={22} className="hover:bg-gray-800 rounded" />
                                                         </button>
                                                     </div>
                                                     <p className="text-base text-center text-gray-500">Quantity: {item.quantity}</p>
@@ -94,7 +94,7 @@ export default function Cart() {
                                                     <div className="flex flex-col p-0 justify-center items-center group">
                                                         <div onClick={() => removeFromCart(item.id)}
                                                             className="text-center text-red-500 transition-transform duration-300 group-hover:scale-85 group-hover:origin-top">
-                                                            <RiDeleteBin2Fill size={26} />
+                                                            <CiCircleRemove size={26} />
                                                         </div>
                                                         <span className="text-red-500 text-base opacity-0 transition-opacity duration-300 group-hover:opacity-100">Remove From Cart</span>
                                                     </div>
