@@ -8,14 +8,14 @@ export default function Home() {
   return (
     <>
       <header className="md:flex md:gap-12 sm:gap-4 sm:mx-auto sm:grid sm:grid-cols-1 sm:justify-center sm:items-center sm:p-2 sm:text-base mx-10 w-full max-w-[85rem] bg-transparent">
-        <div className="md:w-[50rem] md:h-[34rem] mb-12 sm:h-[30rem] sm:px-6 sm:w-full ">
+        <div className="md:w-[50rem] md:h-[34rem] my-6 sm:h-[26rem] sm:px-10">
           <ImageSlider />
         </div>
 
         {/* side details */}
-        <aside className="w-full max-w-[44rem] p-2">
+        <aside className="w-full md:max-w-[44rem] p-2">
           <div>
-            <h1 className="text-[2rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent uppercase bg-gradient-to-r from-amber-800 to-amber-500" style={{
+            <h1 className="md:text-[2rem] sm:text-[1.5rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent sm:truncate uppercase bg-gradient-to-r from-amber-800 to-amber-500" style={{
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
