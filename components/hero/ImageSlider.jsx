@@ -16,8 +16,8 @@ import vintage from '@/assets/vintage-chester.jpg'
 import recliner from '@/assets/recliner-sofa.jpg'
 
 const sofas = [
-  { image: classic, alt: 'Comfy Orange Sofa' },
   { image: sleek, alt: 'Comfy Sleek Leather Sofa' },
+  { image: classic, alt: 'Comfy Orange Sofa' },
   { image: orange, alt: 'Comfy Orange Sofa' },
   { image: velvet, alt: 'Lux Comfy Velvet Sofa' },
   { image: gray, alt: 'Comfy Gray Sofa' },
@@ -49,9 +49,10 @@ export default function ImageSlider() {
         <Image
           key={index}
           src={image.image}
+          loading='lazy'
           className={`w-full h-full absolute top-0 left-0 transition-all ease-in-out duration-500 ${index === currentImage
               ? 'z-10 opacity-100 transform scale-100 translate-x-0 rotate-0'
-              : 'opacity-0 transform scale-[1.1] translate-x-[-1rem] rotate-[-10deg]'
+              : 'opacity-0 transform scale-[1.1] translate-x-[-1rem] rotate-[-12deg]'
             }`}
           alt={image.alt}
         />

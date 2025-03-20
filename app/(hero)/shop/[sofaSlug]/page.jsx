@@ -1,4 +1,4 @@
-import { getSofa } from "@/utils/Products";
+import { getSofa } from "@/utils/Actions";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 

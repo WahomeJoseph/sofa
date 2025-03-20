@@ -69,7 +69,7 @@ app.post('/token', createToken, async (req, res) => {
     TransactionDesc: 'Sofa Lux Merch',
   }
   console.log('STK Push Request Data:', data)
-  
+
   try {
     const response = await axios.post(url, data, {
       headers: {

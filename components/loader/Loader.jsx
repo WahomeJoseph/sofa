@@ -1,11 +1,17 @@
-import React from 'react'
-
 export default function Loader() {
   return (
-    <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-90">
-            <div className="w-20 h-20 border-4 border-t-4 border-gray-800 rounded-full animate-spin"></div>
-        </div>
-    </>
-  )
+    <div className="flex flex-row gap-2 mt-0 items-center justify-center">
+      <div className="w-5 h-5 rounded-full bg-amber-600 animate-bounce"></div>
+      <div
+        className="w-5 h-5 rounded-full bg-amber-600 animate-bounce [animation-delay:-.3s]">
+      </div>
+      <div
+        className="w-5 h-5 rounded-full bg-amber-600 animate-bounce [animation-delay:-.5s]">
+      </div>
+      <div
+        className="w-5 h-5 rounded-full bg-amber-600 animate-bounce [animation-delay:-.7s]">
+      </div>
+    </div>
+  );
 }
+

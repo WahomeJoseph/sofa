@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react"
 import SofaGrid from "@/components/products/SofaGrid";
-import { getSofas } from "@/utils/Products";
+import { getSofas } from "@/utils/Actions";
+import Loader from "@/components/loader/Loader";
 
 import { FaHome } from "react-icons/fa";
 import { MdInventory2 } from "react-icons/md";
@@ -31,14 +32,14 @@ export default function Shop() {
                     <CartIcon />
                 </div>
 
-                <h1 className="uppercase mt-4 text-xl text-center">Elevate your office and home from
-                    <span className="text-amber-600"> Sofa Lux Shop
+                <h1 className="mt-4 text-[1.2rem] tracking-wide text-center">Elevate your office and home from
+                    <span className="text-amber-600"> SofaLux
                     </span>
                 </h1>
             </header >
 
             <main className="flex flex-col items-center justify-center min-h-screen">
-                <Suspense fallback={<span className="font-sans-montserrat mb-20 text-[2rem] text-[#dddfcb] animate-bounce">Loading products...</span>}>
+                <Suspense fallback={<Loader />}>
                     <Sofas />
                 </Suspense>
             </main>

@@ -15,7 +15,7 @@ export default function Home() {
         {/* side details */}
         <aside className="w-full md:max-w-[44rem] p-2">
           <div>
-            <h1 className="md:text-[2rem] sm:text-[1.5rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent sm:truncate uppercase bg-gradient-to-r from-amber-800 to-amber-500" style={{
+            <h1 className="md:text-[2rem] sm:text-[1.5rem] p-1 rounded-sm font-bold font-sans-montserrat tracking-wide bg-transparent uppercase bg-gradient-to-r from-amber-800 to-amber-500" style={{
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',

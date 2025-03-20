@@ -56,7 +56,7 @@ export default function Cart() {
                                             <tr key={item.id} className="p-3 px-12 mb-10 rounded-xs items-center">
                                                 {/* image */}
                                                 <td className="p-5">
-                                                    <div className="flex justify-center">
+                                                    <div className="flex justify-center sm:ssr">
                                                         <Image src={item.image} alt={item.name} width={100} height={100}
                                                             className="object-cover" />
                                                     </div>
@@ -113,11 +113,11 @@ export default function Cart() {
                                     }).format(totalPrice)}
                                 </p>
                                 <div className="w-full flex p-2 justify-between space-x-10 mr-2">
-                                    {/* <button
+                                    <button
                                         onClick={clearCart}
                                         className="bg-red-600 text-[#ddd6cb] cursor-pointer px-4 py-2 rounded-md">
                                         {pending ? 'Clearing Cart' : 'Clear Cart'}
-                                    </button> */}
+                                    </button>
                                     <Link href='/shop/pay'>
                                         <button
                                             className="bg-transparent border hover:bg-amber-600 hover:text-gray-950 text-amber-600 uppercase text-base cursor-pointer px-4 py-2 rounded-md">

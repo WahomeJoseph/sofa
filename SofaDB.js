@@ -1,8 +1,7 @@
 import sql from 'better-sqlite3'
+const db = new sql('lux.db', { verbose: console.log });
 
-const db = new sql('sofas.db',{ verbose: console.log });
-
-// create the sofas table
+// create tables
 db.exec(`
   CREATE TABLE IF NOT EXISTS sofas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,6 +14,15 @@ db.exec(`
     color TEXT NOT NULL,
     in_stock INTEGER NOT NULL
   );
+
+  CREATE TABLE IF NOT EXISTS contacts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  address TEXT NOT NULL,
+  message TEXT NOT NULL
+  )
 `);
 
 // Insert sample sofa data
@@ -177,7 +185,7 @@ const sofas = [
     image: '/images/gray-sofa.jpg',
     material: 'Fabric',
     color: 'Multicolor',
-    in_stock: 0,
+    in_stock: 30,
   },
   {
     name: 'Industrial Sofa',
@@ -187,7 +195,7 @@ const sofas = [
     image: '/images/one-seater.jpg',
     material: 'Metal and Fabric',
     color: 'Gray',
-    in_stock: 1,
+    in_stock: 21,
   },
   {
     name: 'Cozy Loveseat',
@@ -197,7 +205,7 @@ const sofas = [
     image: '/images/classic.jpg',
     material: 'Fabric',
     color: 'Pink',
-    in_stock: 1,
+    in_stock: 14,
   },
   {
     name: 'Elegant Chaise Lounge',
@@ -207,7 +215,7 @@ const sofas = [
     image: '/images/chaise.jpg',
     material: 'Leather',
     color: 'Black',
-    in_stock: 1,
+    in_stock: 14,
   },
   {
     name: 'Modern Sleeper Sofa',
@@ -217,23 +225,32 @@ const sofas = [
     image: '/images/velvet-sofa.jpg',
     material: 'Fabric',
     color: 'White',
-    in_stock: 0,
+    in_stock: 93,
   },
 ];
 
-// Insert sofas into the database
+// insert sofas into the db
 const insert = db.prepare(`
   INSERT INTO sofas (name, slug, description, price, image, material, color, in_stock)
   VALUES (@name, @slug, @description, @price, @image, @material, @color, @in_stock)
 `);
 
-const insertMany = db.transaction((sofas) => {
+// insert contact details into the db
+const users = db.prepare(`
+  INSERT INTO contacts (name, email, phone, address, message)
+  VALUES (@name, @email, @phone, @address, @message)
+`)
+// add contacts to the db
+// const insertUsers = db.transaction((contacts) => {
+//   for (const contact of contacts) users.run(contact);
+// });
+// insertUsers(contacts);
+
+// add sofas to the db
+const insertSofas = db.transaction((sofas) => {
   for (const sofa of sofas) insert.run(sofa);
 });
+insertSofas(sofas);
 
-insertMany(sofas);
-
-console.log('Database created and populated with sofa data.');
-
-// Close the database connection
+console.log('Database created and data populated.');
 db.close();

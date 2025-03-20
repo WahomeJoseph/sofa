@@ -5,8 +5,8 @@ import green from '@/assets/green-sofa.jpg'
 import classic from '@/assets/classic.jpg'
 import gatewood from '@/assets/gatewood.jpg'
 import gray from '@/assets/gray-sofa.jpg'
-import orange from '@/assets/orange-sofa.jpg'
-import seater from '@/assets/one-seater.jpg'
+
+import Teams from "../../../components/team/Teams";
 
 // export async function generateMetadata() {
 //     return {
@@ -19,17 +19,16 @@ export default function About() {
     return (
         <>
             <section className="bg-transparent h-screen flex flex-col space-y-10">
-                <h2 className="text-[2rem] tracking-wide text-center text-amber-600">About Sofa Lux?</h2>
+                <h2 className="text-[2rem] tracking-wide text-center text-amber-600">About Sofa Lux</h2>
                 <div className="grid md:grid-cols-2 gap-10">
-                    {/* info side */}
                     <div className="flex flex-col mx-10">
-                        <article className="flex flex-col items-center p-4 bg-gray-950 max-w-[70rem] border border-gray-800 rounded-sm mt-4 justify-center sm:p-8 w-full">
+                        <article className="flex items-center p-4 bg-gray-950 rounded-xl mt-4 justify-center sm:p-8 w-full" style={{boxShadow: '2px  2px 1px 0 rgba(217, 119, 6, 1)'}}>
                             <p className="text-[#ddd6cb] text-base leading-[1.5] text-center">
                                 Upgrade your home or office with our luxurious and functional sofas. We also revamp existing furniture with fabric changes to match your unique taste and style. Transform your space with our premium services.
                             </p>
                         </article>
                         <div className="flex text-[1.5rem] p-2 mt-6 sm:justify-start sm:w-full">
-                            <Link href='/pricing' className="inline-block mt-3 p-2 rounded-md text-amber-600 border border-gray-800 font-bold hover:border-amber-600">Get Started</Link>
+                            <Link href='/pricing' className="inline-block mt-3 p-2 rounded-md text-amber-600 border border-gray-800 uppercase hover:rounded-full">Get Started</Link>
                         </div>
 
                         <article className="grid grid-cols-4 mt-8 gap-4">
@@ -53,27 +52,24 @@ export default function About() {
                     </div>
 
                     {/* image side */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-10 p-4">
-                        <div className="w-full h-40 relative">
-                            <Image src={green} layout="fill" objectFit="cover" alt="green-sofa" className="rounded-lg shadow-lg" />
+                    <section>
+                        <div className="grid grid-cols-2 gap-10 p-4">
+                            <div className="w-full h-40 relative">
+                                <Image src={green} layout="fill" objectFit="cover" alt="green-sofa" className="rounded-lg shadow-lg" />
+                            </div>
+                            <div className="w-full h-40 relative">
+                                <Image src={classic} layout="fill" objectFit="cover" alt="classic-sofa" className="rounded-lg shadow-lg" />
+                            </div>
+                            <div className="w-full h-40 relative">
+                                <Image src={gatewood} layout="fill" objectFit="cover" alt="gatewood" className="rounded-lg shadow-lg" />
+                            </div>
+                            <div className="w-full h-40 relative">
+                                <Image src={gray} layout="fill" objectFit="cover" alt="gray-sofa" className="rounded-lg shadow-lg" />
+                            </div>
                         </div>
-                        <div className="w-full h-40 relative">
-                            <Image src={classic} layout="fill" objectFit="cover" alt="classic-sofa" className="rounded-lg shadow-lg" />
-                        </div>
-                        <div className="w-full h-40 relative">
-                            <Image src={gatewood} layout="fill" objectFit="cover" alt="gatewood" className="rounded-lg shadow-lg" />
-                        </div>
-                        <div className="w-full h-40 relative">
-                            <Image src={gray} layout="fill" objectFit="cover" alt="gray-sofa" className="rounded-lg shadow-lg" />
-                        </div>
-                        <div className="w-full h-40 relative">
-                            <Image src={orange} layout="fill" objectFit="cover" alt="orange-sofa" className="rounded-lg shadow-lg" />
-                        </div>
-                        <div className="w-full h-40 relative">
-                            <Image src={seater} layout="fill" objectFit="cover" alt="gatewood" className="rounded-lg shadow-lg" />
-                        </div>
-                    </div>
+                    </section>
                 </div>
+                <Teams />
             </section>
         </>
     )
