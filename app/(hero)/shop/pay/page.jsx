@@ -37,7 +37,7 @@ export default function Payment() {
 
                     {/* total price */}
                     <div className="mt-4">
-                        <p className="flex justify-between text-xl text-[#ddd6cb] border-t rounded-sm border-gray-800 mt-2 p-1 mb-4">
+                        <p className="flex justify-between text-xl text-[#ddd6cb] border-b rounded-sm border-gray-800 mt-2 p-1 mb-4">
                             <span className='text-amber-600'>Total:</span>
                             {new Intl.NumberFormat('en-US', {
                                 style: 'currency',
