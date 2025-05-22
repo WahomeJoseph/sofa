@@ -10,7 +10,7 @@ export default function Navlink({ href, children }) {
      && (path === href || path === `${href}`)
     return (
         <Link href={href} className={isActive
-         ? 'clip-text p-2 font-bold rounded-sm bg-amber-700' 
+         ? 'clip-text p-2 font-bold rounded-sm bg-amber-600/90' 
          : 'text-[#ddd6cb] font-bold p-2 rounded hover:bg-clip-text hover:text-amber-600 hover:bg-gradient-to-r from-[#ff8a05] to-[#f9b331]'}>
             {children}
         </Link>

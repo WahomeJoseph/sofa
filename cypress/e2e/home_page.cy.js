@@ -2,9 +2,14 @@ describe('Home Page', () => {
     beforeEach('successfully loads', () => {
       cy.visit('http://localhost:3000')
     })
+
+    cy.request('GET', 'api/users').then((response) => {
+      expect(response.status).to.eq(200)
+    })
     it('renders all page elements without crashing', () => {
       cy.get('header').should('be.visible')
     })
+
     it('renders the description text', () => {
       cy.get('h1').contains('Discover the comfort and style your living room')
     })

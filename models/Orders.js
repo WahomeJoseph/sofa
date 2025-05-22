@@ -1,0 +1,38 @@
+import mongoose from "mongoose";
+
+const OrderSchema = new mongoose.Schema({
+    orderNumber: {
+        type: String,
+        unique: true,
+        default: () => {
+            const date = new Date();
+            return `ORD-${date.getFullYear()}${(date.getMonth() + 1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+        }
+    },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    address: { type: String, required: true },
+    city: { type: String, required: true },
+    postalCode: { type: String, required: true },
+    deliveryMethod: {
+        type: String,
+        enum: ["Standard", "Express"],
+        required: true
+    },
+    paymentMethod: {
+        type: String,
+        enum: ["Cash", "Card", 'Mpesa'],
+        required: true
+    },
+    orderItems: [
+        {
+            productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+            quantity: { type: Number, required: true },
+        },
+    ],
+    totalAmount: { type: Number, required: true },
+    createdAt: { type: Date, default: Date.now },
+})
+
+export default mongoose.models.Order || mongoose.model("Order", OrderSchema);
