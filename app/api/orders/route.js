@@ -6,11 +6,11 @@ export async function POST(request) {
     try {
         await connectDB();
         const body = await request.json();
-        const { name, email, phone, address, city, postalCode, deliveryMethod, paymentMethod, orderItems, totalAmount } = body;
+        const { name, email, phone, address, city, postalCode, deliveryMethod, paymentMethod, paymentTime, orderItems, totalAmount } = body;
 
         // Validate required fields
-        if (!name || !email || !phone || !address || !city || !postalCode || !deliveryMethod || !paymentMethod || !totalAmount) {
-            return NextResponse.json({ message: "Please fill all the fields" }, { status: 400 });
+        if (!name || !email || !phone || !address || !city || !postalCode || !deliveryMethod || !paymentMethod || !paymentTime || !totalAmount) {
+            return NextResponse.json({ message: "Please fill all required fields!" }, { status: 400 });
         }
 
         // Validate order items
@@ -56,6 +56,7 @@ export async function POST(request) {
             postalCode,
             deliveryMethod,
             paymentMethod,
+            paymentTime,
             orderItems,
             totalAmount,
             status: 'pending'

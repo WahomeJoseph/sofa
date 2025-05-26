@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const OrderSchema = new mongoose.Schema({
     orderNumber: {
@@ -17,17 +17,22 @@ const OrderSchema = new mongoose.Schema({
     postalCode: { type: String, required: true },
     deliveryMethod: {
         type: String,
-        enum: ["Standard", "Express"],
+        enum: ['Standard', 'Express'],
         required: true
     },
     paymentMethod: {
         type: String,
-        enum: ["Cash", "Card", 'Mpesa'],
+        enum: ['Cash', 'Card', 'Mpesa'],
+        required: true
+    },
+    paymentTime: {
+        type: String,
+        enum: ['Pay Now', 'Pay On Delivery'],
         required: true
     },
     orderItems: [
         {
-            productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+            productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
             quantity: { type: Number, required: true },
         },
     ],
@@ -35,4 +40,4 @@ const OrderSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 })
 
-export default mongoose.models.Order || mongoose.model("Order", OrderSchema);
+export default mongoose.models.Order || mongoose.model('Order', OrderSchema);

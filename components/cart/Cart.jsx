@@ -13,7 +13,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Badge } from "@/components/ui/badge"
 import { updateQuantity, removeFromCart, clearCart } from "@/lib/features/Cartslice"
 import CartIcon from "./CartIcon"
 

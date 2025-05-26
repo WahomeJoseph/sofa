@@ -6,10 +6,10 @@ export async function POST(request) {
     try {
         await connectDB();
         const body = await request.json();
-        const { name, email, phone, address, city, postalCode, deliveryMethod, paymentMethod, orderItems, totalAmount } = body;
+        const { name, email, phone, address, city, postalCode, deliveryMethod, paymentMethod, paymentTime, orderItems, totalAmount } = body;
 
         // Validate required fields
-        if (!name || !email || !phone || !address || !city || !postalCode || !deliveryMethod || !paymentMethod || !totalAmount) {
+        if (!name || !email || !phone || !address || !city || !postalCode || !deliveryMethod || !paymentMethod || !paymentTime || !totalAmount) {
             return NextResponse.json({ message: "Please fill all the fields" }, { status: 400 });
         }
 
@@ -37,7 +37,10 @@ export async function POST(request) {
             return NextResponse.json(
                 {
                     message: "An order with these details already exists.Proceed to create a new one.",
-                    existingOrder
+                    existingOrder: {
+                        orderNumber: existingOrder.orderNumber,
+                        _id: existingOrder._id,
+                    }
                 },
                 { status: 409 }
             );
@@ -53,6 +56,7 @@ export async function POST(request) {
             postalCode,
             deliveryMethod,
             paymentMethod,
+            paymentTime,
             orderItems,
             totalAmount,
             status: 'pending'

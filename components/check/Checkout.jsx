@@ -8,35 +8,23 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { RadioGroup, RadioGroupItem } from "../ui/radio"
 import { Separator } from "../ui/separator"
-import {
-    CheckCircle,
-    Truck,
-    CreditCard,
-    Phone,
-    ArrowRight,
-    ShoppingBag,
-    User,
-    Calendar,
-    Mail,
-    MapPin,
-    Shield,
-    AlertCircle,
-    ChevronLeft,
-} from "lucide-react"
-import Link from "next/link"
+import { CheckCircle, Truck, CreditCard, Phone, ArrowRight, ShoppingBag, User, Calendar, Mail, MapPin, Shield, AlertCircle, ChevronLeft } from "lucide-react"
+import Payment from "./Payment"
 
 export default function Checkout() {
     const cartItems = useSelector((state) => state.cart.items)
     const [loading, setLoading] = useState(false)
+    const [showPayment, setShowPayment] = useState(false)
     const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        address: "",
-        city: "",
-        postalCode: "",
-        deliveryMethod: "Standard",
-        paymentMethod: "Card",
+        name: "Test",
+        email: "test@gmail.com",
+        phone: "072826829",
+        address: "NBO",
+        city: "City NBO",
+        postalCode: "0100",
+        deliveryMethod: "",
+        paymentMethod: "",
+        paymentTime: ""
     })
 
     // Form validation states
@@ -79,7 +67,8 @@ export default function Checkout() {
                 formData.city &&
                 formData.postalCode &&
                 formData.deliveryMethod &&
-                formData.paymentMethod
+                formData.paymentMethod &&
+                formData.paymentTime
 
             setFormComplete(isComplete)
         }
@@ -101,7 +90,6 @@ export default function Checkout() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // Mark all fields as touched to show validation errors
         const allFields = {
             name: true,
             email: true,
@@ -113,17 +101,15 @@ export default function Checkout() {
         setTouched(allFields)
 
         if (!formComplete) {
-            toast.error("Please fill in all required fields correctly", {
-                description: "Check the form for errors and try again",
-                position: "top-center",
-            })
+            toast.error("Please fill in all required fields correctly")
             return
         }
 
         setLoading(true)
+        setShowPayment(true)
 
         try {
-            const res = await fetch("http://localhost:3001/api/orders", {
+            const res = await fetch("http://localhost:3000/api/orders", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -163,30 +149,67 @@ export default function Checkout() {
         }
     }
 
+    const handlePaymentSuccess = async () => {
+        setLoading(true)
+        try {
+            const res = await fetch("http://localhost:3000/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    orderItems: cartItems,
+                    totalAmount: total,
+                }),
+            })
+            const data = await res.json()
+            if (res.ok) {
+                toast.success("Order placed successfully!", {
+                    description: "Thank you for your purchase!",
+                    duration: 5000,
+                })
+                // Reset form after successful submission
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    address: "",
+                    city: "",
+                    postalCode: "",
+                    deliveryMethod: "Standard",
+                    paymentMethod: "Card",
+                })
+                setTouched({})
+            } else {
+                toast.error(data.message || "Something went wrong. Please try again.")
+            }
+        } catch (error) {
+            toast.error("Checkout failed. Please try again.")
+            console.error("Checkout error:", error)
+        } finally {
+            setLoading(false)
+        }
+    }
+
     return (
         <div className="min-h-screen bg-transparent text-amber-100/90">
             <Toaster position="top-center" richColors />
+            <Payment 
+            isOpen={showPayment}
+            onClose={() => setShowPayment(false)}
+            onPaymentSuccess={handlePaymentSuccess}
+            orderData={{
+                total,
+                items: cartItems,
+                customerInfo: formData
+            }}
+            paymentMethod={formData.paymentMethod}
+            />
 
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-6xl mx-auto">
-                    {/* <motion.div
-                        className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}>
-                        <div>
-                            <Link
-                                href="/shop"
-                                className="flex items-center text-amber-600 hover:text-amber-500 mb-2 transition-colors">
-                                <ChevronLeft className="h-4 w-4 mr-1" />
-                                Back to Shop
-                            </Link>
-                            <h1 className="text-3xl font-bold text-amber-600">Checkout</h1>
-                        </div>
-                    </motion.div> */}
-
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        {/* Customer Information Form */}
                         <motion.div
                             className="lg:col-span-2 space-y-6"
                             initial={{ opacity: 0, y: 20 }}
@@ -220,7 +243,7 @@ export default function Checkout() {
                                                     onBlur={handleBlur}
                                                     className={`h-12 rounded-md bg-gray-900/60 border ${touched.name && errors.name
                                                         ? "border-red-500/50 focus:ring-red-500/30"
-                                                        : "border-amber-600/20 focus:ring-amber-600/30"
+                                                        : "border-gray-600/20 focus:ring-amber-600/30"
                                                         } focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30 transition-all duration-200`}
                                                     placeholder="John Doe"
                                                     required
@@ -251,7 +274,7 @@ export default function Checkout() {
                                                 onBlur={handleBlur}
                                                 className={`h-12 rounded-md bg-gray-900/60 border ${touched.email && errors.email
                                                     ? "border-red-500/50 focus:ring-red-500/30"
-                                                    : "border-amber-600/20 focus:ring-amber-600/30"
+                                                    : "border-gray-600/20 focus:ring-amber-600/30"
                                                     } focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30 transition-all duration-200`}
                                                 placeholder="your.email@example.com"
                                                 required
@@ -283,7 +306,7 @@ export default function Checkout() {
                                                     onBlur={handleBlur}
                                                     className={`h-12 rounded-md bg-gray-900/60 border ${touched.phone && errors.phone
                                                         ? "border-red-500/50 focus:ring-red-500/30"
-                                                        : "border-amber-600/20 focus:ring-amber-600/30"
+                                                        : "border-gray-600/20 focus:ring-amber-600/30"
                                                         } focus:border-amber-600/40 text-amber-100 pl-10 placeholder-amber-100/30 transition-all duration-200`}
                                                     placeholder="+254 700 000 000"
                                                     required
@@ -303,8 +326,7 @@ export default function Checkout() {
                                         <div className="space-y-2">
                                             <Label
                                                 htmlFor="address"
-                                                className="text-sm font-medium text-amber-100/80 flex items-center gap-2"
-                                            >
+                                                className="text-sm font-medium text-amber-100/80 flex items-center gap-2">
                                                 <MapPin className="h-4 w-4 text-amber-600/80" />
                                                 Delivery Address
                                             </Label>
@@ -316,7 +338,7 @@ export default function Checkout() {
                                                 onBlur={handleBlur}
                                                 className={`h-12 rounded-md bg-gray-900/60 border ${touched.address && errors.address
                                                     ? "border-red-500/50 focus:ring-red-500/30"
-                                                    : "border-amber-600/20 focus:ring-amber-600/30"
+                                                    : "border-gray-600/20 focus:ring-amber-600/30"
                                                     } focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30 transition-all duration-200`}
                                                 placeholder="4th St, Paradise Apartment 4B"
                                                 required
@@ -346,7 +368,7 @@ export default function Checkout() {
                                                     onBlur={handleBlur}
                                                     className={`h-12 rounded-md bg-gray-900/60 border ${touched.city && errors.city
                                                         ? "border-red-500/50 focus:ring-red-500/30"
-                                                        : "border-amber-600/20 focus:ring-amber-600/30"
+                                                        : "border-gray-600/20 focus:ring-amber-600/30"
                                                         } focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30 transition-all duration-200`}
                                                     placeholder="Nairobi"
                                                     required
@@ -376,7 +398,7 @@ export default function Checkout() {
                                                     onBlur={handleBlur}
                                                     className={`h-12 rounded-md bg-gray-900/60 border ${touched.postalCode && errors.postalCode
                                                         ? "border-red-500/50 focus:ring-red-500/30"
-                                                        : "border-amber-600/20 focus:ring-amber-600/30"
+                                                        : "border-gray-600/20 focus:ring-amber-600/30"
                                                         } focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30 transition-all duration-200`}
                                                     placeholder="00100"
                                                     required
@@ -399,8 +421,7 @@ export default function Checkout() {
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.3 }}
-                            >
+                                transition={{ duration: 0.5, delay: 0.3 }}>
                                 <Card className="border border-amber-600/10 bg-gray-900/80 shadow-xl overflow-hidden">
                                     <CardHeader className="pb-4 border-b border-amber-600/20">
                                         <div className="flex items-center">
@@ -420,16 +441,14 @@ export default function Checkout() {
                                             value={formData.deliveryMethod}
                                             onValueChange={(value) => setFormData({ ...formData, deliveryMethod: value })}
                                             className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                                            disabled={loading}
-                                        >
+                                            disabled={loading}>
                                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                                 <label
                                                     htmlFor="standard"
                                                     className={`flex flex-col p-5 border rounded-lg cursor-pointer transition-all ${formData.deliveryMethod === "Standard"
-                                                        ? "border-amber-600 bg-amber-600/10"
+                                                        ? "border-amber-600/10 bg-amber-600/10"
                                                         : "border-amber-600/20 bg-gray-800/50 hover:border-amber-600/40"
-                                                        }`}
-                                                >
+                                                        }`}>
                                                     <div className="flex items-start">
                                                         <RadioGroupItem value="Standard" id="standard" className="mt-1" />
                                                         <div className="ml-3">
@@ -448,10 +467,9 @@ export default function Checkout() {
                                                 <label
                                                     htmlFor="express"
                                                     className={`flex flex-col p-5 border rounded-lg cursor-pointer transition-all ${formData.deliveryMethod === "Express"
-                                                        ? "border-amber-600 bg-amber-600/10"
+                                                        ? "border-amber-600/10 bg-amber-600/10"
                                                         : "border-amber-600/20 bg-gray-800/50 hover:border-amber-600/40"
-                                                        }`}
-                                                >
+                                                        }`}>
                                                     <div className="flex items-start">
                                                         <RadioGroupItem value="Express" id="express" className="mt-1" />
                                                         <div className="ml-3">
@@ -474,8 +492,7 @@ export default function Checkout() {
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                            >
+                                transition={{ duration: 0.5, delay: 0.4 }}>
                                 <Card className="border border-amber-600/10 bg-gray-900/80 shadow-xl overflow-hidden">
                                     <CardHeader className="pb-4 border-b border-amber-600/20">
                                         <div className="flex items-center">
@@ -493,16 +510,14 @@ export default function Checkout() {
                                             value={formData.paymentMethod}
                                             onValueChange={(value) => setFormData({ ...formData, paymentMethod: value })}
                                             className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                                            disabled={loading}
-                                        >
+                                            disabled={loading}>
                                             {/* Card Payment Option */}
                                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                                 <div
                                                     className={`flex flex-col p-5 border rounded-lg cursor-pointer transition-all ${formData.paymentMethod === "Card"
-                                                        ? "border-amber-600 bg-amber-600/10"
+                                                        ? "border-amber-600/10 bg-amber-600/10"
                                                         : "border-amber-600/20 bg-gray-800/50 hover:border-amber-600/40"
-                                                        }`}
-                                                >
+                                                        }`}>
                                                     <label htmlFor="card" className="flex items-start cursor-pointer">
                                                         <RadioGroupItem value="Card" id="card" className="mt-1" />
                                                         <div className="ml-3">
@@ -528,10 +543,9 @@ export default function Checkout() {
                                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                                 <div
                                                     className={`flex flex-col p-5 border rounded-lg cursor-pointer transition-all ${formData.paymentMethod === "Mpesa"
-                                                        ? "border-amber-600 bg-amber-600/10"
+                                                        ? "border-amber-600/10 bg-amber-600/10"
                                                         : "border-amber-600/20 bg-gray-800/50 hover:border-amber-600/40"
-                                                        }`}
-                                                >
+                                                        }`}>
                                                     <label htmlFor="mpesa" className="flex items-start cursor-pointer">
                                                         <RadioGroupItem value="Mpesa" id="mpesa" className="mt-1" />
                                                         <div className="ml-3">
@@ -546,59 +560,46 @@ export default function Checkout() {
                                             </motion.div>
                                         </RadioGroup>
 
-                                        {/* Conditional card details form */}
-                                        {/* <AnimatePresence>
-                                            {formData.paymentMethod === "Card" && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: "auto" }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    transition={{ duration: 0.3 }}
-                                                    className="mt-6 p-4 rounded-lg border border-amber-600/20 bg-gray-800/30">
-                                                    <div className="flex items-center mb-4">
-                                                        <Shield className="h-4 w-4 text-amber-600 mr-2" />
-                                                        <h3 className="text-sm font-medium text-amber-100">Secure Card Payment</h3>
-                                                    </div>
-                                                    <div className="space-y-4">
-                                                        <div className="space-y-2">
-                                                            <Label htmlFor="cardNumber" className="text-sm text-amber-100/80">
-                                                                Card Number
-                                                            </Label>
-                                                            <div className="relative">
-                                                                <CreditCard className="absolute left-3 top-4 h-4 w-4 text-amber-600/50" />
-                                                                <Input
-                                                                    id="cardNumber"
-                                                                    placeholder="1234 5678 9012 3456"
-                                                                    className="h-12 rounded-md bg-gray-800/50 border border-amber-600/20 focus:ring-amber-600/30 focus:border-amber-600/40 text-amber-100 pl-10 placeholder-amber-100/30"
-                                                                />
-                                                            </div>
+                                        {/* Conditional payment time form */}
+                                        <RadioGroup
+                                            value={formData.paymentTime}
+                                            onValueChange={(value) => setFormData({ ...formData, paymentTime: value })}
+                                            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10"
+                                            disabled={loading}>
+                                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                                <div
+                                                    className={`flex flex-col p-5 border rounded-lg cursor-pointer transition-all ${formData.paymentTime === "Pay Now"
+                                                        ? "border-amber-600/10 bg-amber-600/10"
+                                                        : "border-amber-600/20 bg-gray-800/50 hover:border-amber-600/40"
+                                                        }`}>
+                                                    <label htmlFor="pay-now" className="flex items-start cursor-pointer">
+                                                        <RadioGroupItem value="Pay Now" id="pay-now" className="mt-1" />
+                                                        <div className="ml-3">
+                                                            <span className="font-medium text-amber-100">Pay Now</span>
+                                                            <p className="text-sm text-amber-100/60 mt-1">Make instant pay</p>
                                                         </div>
-                                                        <div className="grid grid-cols-2 gap-4">
-                                                            <div className="space-y-2">
-                                                                <Label htmlFor="expiry" className="text-sm text-amber-100/80">
-                                                                    Expiry Date
-                                                                </Label>
-                                                                <Input
-                                                                    id="expiry"
-                                                                    placeholder="MM/YY"
-                                                                    className="h-12 rounded-md bg-gray-800/50 border border-amber-600/20 focus:ring-amber-600/30 focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30"
-                                                                />
-                                                            </div>
-                                                            <div className="space-y-2">
-                                                                <Label htmlFor="cvc" className="text-sm text-amber-100/80">
-                                                                    CVC
-                                                                </Label>
-                                                                <Input
-                                                                    id="cvc"
-                                                                    placeholder="123"
-                                                                    className="h-12 rounded-md bg-gray-800/50 border border-amber-600/20 focus:ring-amber-600/30 focus:border-amber-600/40 text-amber-100 placeholder-amber-100/30"
-                                                                />
-                                                            </div>
+                                                    </label>
+                                                </div>
+                                            </motion.div>
+
+                                            {/* M-Pesa Payment Option */}
+                                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                                <div
+                                                    className={`flex flex-col p-5 border rounded-lg cursor-pointer transition-all ${formData.paymentTime === "Pay On Delivery"
+                                                        ? "border-amber-600/10 bg-amber-600/10"
+                                                        : "border-amber-600/20 bg-gray-800/50 hover:border-amber-600/40"
+                                                        }`}>
+                                                    <label htmlFor="pay-on-delivery" className="flex items-start cursor-pointer">
+                                                        <RadioGroupItem value="Pay On Delivery" id="pay-on-delivery" className="mt-1" />
+                                                        <div className="ml-3">
+                                                            <span className="font-medium text-amber-100">Pay On Delivery</span>
+                                                            <p className="text-sm text-amber-100/60 mt-1">Make payment on goods delivery</p>
                                                         </div>
-                                                    </div>
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence> */}
+                                                    </label>
+                                                </div>
+                                            </motion.div>
+                                        </RadioGroup>
+
                                     </CardContent>
                                 </Card>
                             </motion.div>
@@ -687,14 +688,15 @@ export default function Checkout() {
                                                 </div>
                                             </div>
 
-                                            <motion.button
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
-                                                onClick={handleSubmit}
-                                                className="w-full h-14 text-base font-medium bg-transparent border border-amber-600/20 hover:bg-amber-600/10 text-[#ddd6cb] rounded-md transition-colors duration-200 flex items-center justify-center"
-                                                disabled={loading || cartItems.length === 0 || !formComplete}>
-                                                {loading ? 'Processing...' : 'Complete Order'}
-                                            </motion.button>
+                                                <motion.button
+                                                    whileHover={{ scale: 1.02 }}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    onClick={handleSubmit}
+                                                    className="w-full h-14 text-base font-medium bg-transparent border border-amber-600/20 hover:bg-amber-600/10 text-[#ddd6cb] rounded-md transition-colors duration-200 flex items-center justify-center"
+                                                    disabled={loading || cartItems.length === 0 || !formComplete}>
+                                                    {loading ? 'Processing...' : 'Complete Order'}
+                                                </motion.button>
+
 
                                             <div className="flex flex-col space-y-3 mt-4">
                                                 <div className="flex items-center text-sm text-amber-100/60">
