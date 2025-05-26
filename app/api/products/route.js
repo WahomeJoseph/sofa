@@ -6,16 +6,17 @@ export async function POST(request) {
     try {
         await connectDB();
         const body = await request.json();
-        const { name, description, price, category, images, material, colors, seatingCapacity,
+        const { name, slug, description, price, category, images, material, colors, seatingCapacity,
             features, stockQuantity, inStock, brand, warranty, reviews } = body;
         // Validate required fields
-        if (!name || !description || !price || !category || !images || !material || !colors || !seatingCapacity
+        if (!name || !slug || !description || !price || !category || !images || !material || !colors || !seatingCapacity
             || !features || !stockQuantity || !inStock || !brand || !warranty || !reviews
         ) {
             return NextResponse.json({ message: 'Please fill all the required fields' }, { status: 400 });
         }
         const newProduct = await Product.create({
             name,
+            slug,
             description,
             price,
             category,

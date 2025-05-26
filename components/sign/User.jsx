@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { LogOut, ShoppingBag } from 'lucide-react'
 import { toast, Toaster } from 'sonner'
 
-const Users = () => {
+export const Users = () => {
   const { data: session, status } = useSession()
   const router = useRouter()
 
@@ -83,5 +83,3 @@ const Users = () => {
     </nav>
   )
 }
-
-export default UserButton

@@ -2,10 +2,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Navlink from './Navlink'
-
 import { TiThMenu } from "react-icons/ti";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
-import Users from '../sign/User';
+import { Users } from '../sign/User';
 
 export default function Navigation() {
     const [openMenu, setOpenMenu] = useState(false)
@@ -38,7 +37,7 @@ export default function Navigation() {
                                 <Navlink href='/services'>Services</Navlink>
                             </li>
                             <li onClick={closeNav} className="hover:translate-y-1 transform-all duration-300">
-                                <Navlink href='/shop'>Shop</Navlink>
+                                <Navlink href='/products'>Shop</Navlink>
                             </li>
                             <Users />
                         </ul>

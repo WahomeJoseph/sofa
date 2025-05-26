@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'sonner';
 import { addToCart } from '@/lib/features/Cartslice';
@@ -8,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '../ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-import Link from 'next/link';
 import { ShoppingCart, Heart, Eye, Zap, Check } from 'lucide-react';
 
 export const SofaCard = ({ product }) => {

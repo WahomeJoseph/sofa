@@ -10,7 +10,10 @@ const sofas = [
     description: "A spacious L-shaped sofa with storage, perfect for Kenyan living rooms.",
     price: 149999,
     category: "L-Shaped",
-    images: ["/classic-leather.jpg"],
+    images: [
+      "/classic-leather.jpg",
+      "/modern-fabric.jpg"
+    ],
     material: "Leather",
     colors: ["Black", "Brown"],
     inStock: true,
@@ -27,7 +30,10 @@ const sofas = [
     description: "A modern fabric sofa with plush cushions for ultimate comfort.",
     price: 79999,
     category: "Stationary",
-    images: ["/modern-fabric.jpg"],
+    images: [
+      "/modern-fabric.jpg",
+      "/vintage-chester.jpg"
+    ],
     material: "Fabric",
     colors: ["Gray", "Beige"],
     inStock: true,
@@ -44,7 +50,10 @@ const sofas = [
     description: "A tufted leather Chesterfield with classic elegance.",
     price: 199999,
     category: "Chesterfield",
-    images: ["/vintage-chester.jpg"],
+    images: [
+      "/vintage-chester.jpg",
+      "/vintage-chester.jpg"
+    ],
     material: "Leather",
     colors: ["Brown", "Burgundy"],
     inStock: true,
@@ -61,7 +70,10 @@ const sofas = [
     description: "A minimalist loveseat for small apartments or cozy corners.",
     price: 59999,
     category: "Loveseat",
-    images: ["/loveseat.jpg"],
+    images: [
+      "/loveseat.jpg",
+      "/sectional.jpg"
+    ],
     material: "Fabric",
     colors: ["White", "Gray"],
     inStock: true,
@@ -78,7 +90,10 @@ const sofas = [
     description: "A large U-shaped sofa for family gatherings, with adjustable headrests.",
     price: 349999,
     category: "U-Shaped",
-    images: ["/sectional.jpg"],
+    images: [
+      "/sectional.jpg",
+      "/velvet-sofa.jpg"
+    ],
     material: "Fabric",
     colors: ["Blue", "Gray"],
     inStock: true,
@@ -95,7 +110,10 @@ const sofas = [
     description: "A reclining sofa with USB ports and built-in footrests.",
     price: 129999,
     category: "Recliner",
-    images: ["/recliner-sofa.jpg"],
+    images: [
+      "/recliner-sofa.jpg",
+      "/velvet-sofa.jpg"
+    ],
     material: "Leather",
     colors: ["Beige", "Black"],
     inStock: true,
@@ -112,7 +130,10 @@ const sofas = [
     description: "A mid-century modern sofa with sleek wooden legs.",
     price: 109999,
     category: "Stationary",
-    images: ["/orange-sofa.jpg"],
+    images: [
+      "/orange-sofa.jpg",
+      "/recliner-sofa.jpg"
+    ],
     material: "Wood",
     colors: ["Green", "Mustard"],
     inStock: false,
@@ -129,7 +150,10 @@ const sofas = [
     description: "A convertible sofa bed for guests, with hidden storage.",
     price: 139999,
     category: "Sofa Bed",
-    images: ["/convertible-sofa.jpg"],
+    images: [
+      "/convertible-sofa.jpg",
+      "/orange-sofa.jpg"
+    ],
     material: "Fabric",
     colors: ["Charcoal", "Navy"],
     inStock: true,
@@ -146,7 +170,10 @@ const sofas = [
     description: "A luxurious velvet sofa with a soft, elegant touch.",
     price: 159999,
     category: "Stationary",
-    images: ["/velvet-sofa.jpg"],
+    images: [
+      "/velvet-sofa.jpg",
+      "/convertible-sofa.jpg"
+    ],
     material: "Velvet",
     colors: ["Navy", "Emerald"],
     inStock: true,
@@ -163,7 +190,10 @@ const sofas = [
     description: "A rustic sofa with wooden accents for a cozy vibe.",
     price: 99999,
     category: "Stationary",
-    images: ["/rustic-sofa.jpg"],
+    images: [
+      "/rustic-sofa.jpg",
+      "/convertible-sofa.jpg"
+    ],
     material: "Wood",
     colors: ["Brown", "Gray"],
     inStock: true,
@@ -180,7 +210,10 @@ const sofas = [
     description: "A modern leather sofa with a minimalist aesthetic.",
     price: 169999,
     category: "Stationary",
-    images: ["/sleek-leather.jpg"],
+    images: [
+      "/sleek-leather.jpg",
+      "/sofa-bed.jpg",
+    ],
     material: "Leather",
     colors: ["White", "Matte Black", "Gray"],
     inStock: false,
@@ -197,7 +230,10 @@ const sofas = [
     description: "A space-saving sofa bed for small Nairobi apartments.",
     price: 79999,
     category: "Sofa Bed",
-    images: ["/sofa-bed.jpg"],
+    images: [
+      "/sofa-bed.jpg",
+      "/recliner-sofa.jpg"
+    ],
     material: "Fabric",
     colors: ["Gray", "Blue"],
     inStock: true,
@@ -214,7 +250,10 @@ const sofas = [
     description: "An L-shaped sofa with a breezy, coastal-inspired design.",
     price: 179999,
     category: "L-Shaped",
-    images: ["/l-shaped.jpg"],
+    images: [
+      "/l-shaped.jpg",
+      "/sofa-bed.jpg",
+    ],
     material: "Fabric",
     colors: ["Beige", "White"],
     inStock: true,
@@ -231,7 +270,10 @@ const sofas = [
     description: "A tufted fabric sofa with timeless charm.",
     price: 119999,
     category: "Chesterfield",
-    images: ["/tufted-sofa.jpg"],
+    images: [
+      "/tufted-sofa.jpg",
+      "/sofa-bed.jpg",
+    ],
     material: "Fabric",
     colors: ["Blue", "Gray"],
     inStock: true,
@@ -248,7 +290,10 @@ const sofas = [
     description: "A modular sofa for customizable layouts in modern homes.",
     price: 249999,
     category: "Modular",
-    images: ["/recliner-sofa.jpg"],
+    images: [
+      "/recliner-sofa.jpg",
+      "/tufted-sofa.jpg"
+    ],
     material: "Fabric",
     colors: ["Black", "Gray"],
     inStock: true,
@@ -265,7 +310,10 @@ const sofas = [
     description: "A bohemian-style sofa with vibrant, textured fabric.",
     price: 89999,
     category: "Stationary",
-    images: ["/gray-sofa.jpg"],
+    images: [
+      "/gray-sofa.jpg",
+      "/tufted-sofa.jpg"
+    ],
     material: "Fabric",
     colors: ["Multicolor", "Beige"],
     inStock: true,
@@ -282,7 +330,10 @@ const sofas = [
     description: "An industrial-style sofa with metal frame accents.",
     price: 129999,
     category: "Stationary",
-    images: ["/one-seater.jpg"],
+    images: [
+      "/gray-sofa.jpg",
+      "/tufted-sofa.jpg"
+    ],
     material: "Metal",
     colors: ["Gray", "Black"],
     inStock: true,
@@ -299,7 +350,10 @@ const sofas = [
     description: "A cozy loveseat in soft pink for intimate spaces.",
     price: 69999,
     category: "Loveseat",
-    images: ["/classic.jpg"],
+    images: [
+      "/classic.jpg",
+      "/tufted-sofa.jpg"
+    ],
     material: "Fabric",
     colors: ["Pink", "Gray"],
     inStock: false,
@@ -316,7 +370,10 @@ const sofas = [
     description: "An elegant chaise lounge for luxurious relaxation.",
     price: 149999,
     category: "Single-Seater",
-    images: ["/chaise.jpg"],
+    images: [
+      "/chaise.jpg",
+      "/classic.jpg"
+    ],
     material: "Leather",
     colors: ["Black", "White"],
     inStock: true,
@@ -333,7 +390,10 @@ const sofas = [
     description: "A minimalist sleeper sofa for modern guest rooms.",
     price: 129999,
     category: "Sofa Bed",
-    images: ["/velvet-sofa.jpg"],
+    images: [
+      "/velvet-sofa.jpg",
+      "/classic.jpg"
+    ],
     material: "Fabric",
     colors: ["White", "Gray"],
     inStock: true,
