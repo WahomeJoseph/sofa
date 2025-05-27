@@ -1,5 +1,4 @@
 "use client";
-
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -7,8 +6,6 @@ import { FiShoppingCart, FiChevronRight, FiStar } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { use } from "react";
 
-
-// Animation variants
 const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.5 } }
@@ -30,9 +27,7 @@ const staggerContainer = {
 };
 
 export default function ProductPage({ params }) {
-    // const id = params.id;
     const { id } = use(params);
-
     const [mainImage, setMainImage] = useState(null);
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -82,8 +77,7 @@ export default function ProductPage({ params }) {
             initial="hidden"
             animate="visible"
             variants={fadeIn}
-            className="bg-transparent min-h-screen text-gray-100">
-            {/* Breadcrumb Navigation */}
+            className="bg-transparent min-h-screen py-22 text-gray-100">
             <nav className="bg-gray-900 py-3 px-4 shadow-sm border-b border-gray-700">
                 <div className="container mx-auto">
                     <div className="flex items-center space-x-2 text-sm text-gray-400">

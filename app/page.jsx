@@ -8,7 +8,7 @@ import About from "../components/hero/About";
 export default function Home() {
   console.log('Welcome To Sofa Lux Utilities!')
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen py-20">
       <header className="md:flex md:gap-12 sm:gap-4 sm:mx-auto sm:grid sm:grid-cols-1 sm:justify-center sm:items-center sm:p-2 sm:text-base mx-10 w-full mb-10 max-w-[85rem] bg-transparent">
         <div className="md:w-[50rem] md:h-[34rem] my-6 sm:h-[26rem] sm:px-10">
           <ImageSlider />

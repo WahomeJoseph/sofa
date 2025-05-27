@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
 import { toast } from "react-hot-toast"
-import { AlertTriangle, Eye, EyeOff, Github, Loader2, LockKeyhole, Mail, ShieldCheck } from "lucide-react"
+import { AlertTriangle, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -22,10 +22,8 @@ export const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
 
-  // Form validation states
   const [emailTouched, setEmailTouched] = useState(false)
   const [passwordTouched, setPasswordTouched] = useState(false)
-
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   const isPasswordValid = password.length >= 6
 
@@ -36,7 +34,6 @@ export const SignIn = () => {
       toast.error("Please check your email and password")
       return
     }
-
     setPending(true)
     setError("")
 
@@ -51,7 +48,7 @@ export const SignIn = () => {
         toast.success("Welcome back to SofaLux!", {
           duration: 3000,
         })
-        router.push("/shop")
+        router.push("/products")
       } else {
         setError(
           res?.error === "AccessDenied"

@@ -105,7 +105,7 @@ export default function Shop() {
 
   return (
     <>
-      <main className='p-0'>
+      <main className='md:py-24'>
           <Toaster position="top-center" richColors />
         <div className='flex flex-col min-h-screen bg-transparent pt-0 px-4 md:px-24'>
           <h1 className='text-3xl mb-3 font-bold text-[#ddd6cb] text-center'>Welcome To Our Shop</h1>

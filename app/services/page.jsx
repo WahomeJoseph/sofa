@@ -12,7 +12,7 @@ export async function generateMetadata() {
 
 export default function Services() {
     return (
-        <main className="min-h-screen bg-gray-950 text-[#ddd6cb]">
+        <main className="min-h-screen bg-gray-950 py-12 text-[#ddd6cb]">
             <Toaster position="top-center" richColors/>
             <section className="relative py-16 overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
