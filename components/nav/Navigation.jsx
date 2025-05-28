@@ -86,11 +86,9 @@ export default function Navigation() {
                             )}
                         </motion.div>
                     ))}
-
                     <AccountNav />
                 </nav>
 
-                {/* Mobile Menu Button */}
                 <motion.button
                     onClick={() => {
                         setIsOpen(!isOpen)
